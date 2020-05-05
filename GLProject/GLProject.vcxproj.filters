@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Users">
       <UniqueIdentifier>{9ec16fc6-b24a-4622-904c-95a0b75cbb7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\data">
+      <UniqueIdentifier>{0d6dd12c-3bf7-4342-9af5-bed7d311c8f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\data">
+      <UniqueIdentifier>{a4c33b81-9fce-4e07-ba51-dec47fa6604c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GLProject.cpp">
@@ -42,6 +48,15 @@
     <ClCompile Include="CompanyEmployee.cpp">
       <Filter>Source Files\Users</Filter>
     </ClCompile>
+    <ClCompile Include="Sensor.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="AirQualityData.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="Coordinate.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AirQualityManager.h">
@@ -61,6 +76,15 @@
     </ClInclude>
     <ClInclude Include="GovEmployee.h">
       <Filter>Header Files\Users</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="AirQualityData.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Coordinate.h">
+      <Filter>Header Files\data</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
