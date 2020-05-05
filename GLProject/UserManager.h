@@ -32,6 +32,6 @@ protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
-	std::set<User> userList;
+	std::set<users::User> userList;
 };
 

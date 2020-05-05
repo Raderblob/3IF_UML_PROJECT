@@ -1,11 +1,12 @@
 #pragma once
 #include "User.h"
-class PrivateIndividual :
-	public User
-{
-	//----------------------------------------------------------------- PUBLIC
-public:
-	//----------------------------------------------------- Méthodes publiques
+namespace users {
+	class PrivateIndividual :
+		public User
+	{
+		//----------------------------------------------------------------- PUBLIC
+	public:
+		//----------------------------------------------------- Méthodes publiques
 
 
 
@@ -15,18 +16,19 @@ public:
 
 
 
-	//------------------------------------------------- Surcharge d'opérateurs
+		//------------------------------------------------- Surcharge d'opérateurs
 
-	//-------------------------------------------- Constructeurs - destructeur
+		//-------------------------------------------- Constructeurs - destructeur
 
 
 
-	//------------------------------------------------------------------ PRIVE
-protected:
-	//----------------------------------------------------- Méthodes protégées
+		//------------------------------------------------------------------ PRIVE
+	protected:
+		//----------------------------------------------------- Méthodes protégées
 
-	//----------------------------------------------------- Attributs protégés
-	std::string ID;
-	double numOfPoints;
-};
+		//----------------------------------------------------- Attributs protégés
+		std::string ID;
+		double numOfPoints;
+	};
+}
 
