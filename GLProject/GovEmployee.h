@@ -20,7 +20,7 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
 
-	GovEmployee(const std::string& govId, AirQualityManager& myManager, const std::string& fName, const std::string& lName, const std::string& mail, const std::string& passw, const std::string& pNumber);
+	GovEmployee(const std::string& gId, AirQualityManager& myManager, const std::string& fName, const std::string& lName, const std::string& mail, const std::string& passw, const std::string& pNumber);
 
 	//------------------------------------------------------------------ PRIVE
 protected:

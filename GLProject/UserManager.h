@@ -1,7 +1,7 @@
 #pragma once
-#include <list>
-#include "UserManager.h"
-class AirQualityManager
+#include <set>
+#include "User.h"
+class UserManager
 {
 	//----------------------------------------------------------------- PUBLIC
 public:
@@ -10,7 +10,11 @@ public:
 
 
 
+	int addUser();
 
+	int tryLogin();
+
+	int tryLogout();
 
 
 
@@ -18,14 +22,16 @@ public:
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	//-------------------------------------------- Constructeurs - destructeur
+	UserManager();//load users from .txt
 
 
+	virtual ~UserManager();
 
 	//------------------------------------------------------------------ PRIVE
 protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
-	UserManager userManager;
+	std::set<User> userList;
 };
 
