@@ -17,8 +17,10 @@ namespace users {
 
 
 		//------------------------------------------------- Surcharge d'opérateurs
-
-			//-------------------------------------------- Constructeurs - destructeur
+		bool operator <(const User& otherUser) const;
+		bool operator ==(const User& otherUser) const;
+		User& operator = (const User& otherUser);
+		//-------------------------------------------- Constructeurs - destructeur
 
 		User(const std::string& fName, const std::string& lName, const std::string& mail, const std::string& passw, const std::string& pNumber);
 

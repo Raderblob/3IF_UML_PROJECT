@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AirCleaner.cpp" />
     <ClCompile Include="AirQualityData.cpp" />
     <ClCompile Include="AirQualityManager.cpp" />
     <ClCompile Include="CompanyEmployee.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="UserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AirCleaner.h" />
     <ClInclude Include="AirQualityData.h" />
     <ClInclude Include="AirQualityManager.h" />
     <ClInclude Include="CompanyEmployee.h" />

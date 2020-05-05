@@ -57,6 +57,9 @@
     <ClCompile Include="Coordinate.cpp">
       <Filter>Source Files\data</Filter>
     </ClCompile>
+    <ClCompile Include="AirCleaner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AirQualityManager.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="Coordinate.h">
       <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="AirCleaner.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
