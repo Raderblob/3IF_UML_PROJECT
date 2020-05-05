@@ -1,9 +1,7 @@
 #pragma once
-#include <list>
-#include "UserManager.h"
-#include "Sensor.h"
-#include "AirCleaner.h"
-class AirQualityManager
+#include <string>
+
+class AirCleaner
 {
 	//----------------------------------------------------------------- PUBLIC
 public:
@@ -20,16 +18,16 @@ public:
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	//-------------------------------------------- Constructeurs - destructeur
+	AirCleaner(const std::string& aCID, const std::string& descr);
 
-
+	virtual ~AirCleaner();
 
 	//------------------------------------------------------------------ PRIVE
 protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
-	UserManager userManager;
-	std::set<data::Sensor> sensors;
-	std::set<AirCleaner> cleaners;
+	std::string airCleanerId;
+	std::string description;
+	bool activated;
 };
-
