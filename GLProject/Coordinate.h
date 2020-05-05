@@ -15,7 +15,9 @@ namespace data {
 
 
 		//------------------------------------------------- Surcharge d'opérateurs
-
+		bool operator <(const Coordinate& otherCoord) const;
+		bool operator ==(const Coordinate& otherCoord) const;
+		Coordinate& operator = (const Coordinate& otherCoord);
 		//-------------------------------------------- Constructeurs - destructeur
 
 		Coordinate(const double& longd, const double& lat);
