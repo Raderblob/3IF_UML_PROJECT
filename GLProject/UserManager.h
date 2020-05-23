@@ -1,5 +1,6 @@
 #pragma once
 #include <set>
+#include <map>
 #include "User.h"
 class UserManager
 {
@@ -10,12 +11,13 @@ public:
 
 
 
-	int addUser();
+	int addUser(const users::User* user);
 
-	int tryLogin();
+	const users::User* tryLogin(const std::string& login, const std::string& password)const;
 
-	int tryLogout();
+	int tryLogout(const users::User& user)const;
 
+	int saveUsers();
 
 
 
@@ -32,6 +34,7 @@ protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
-	std::set<users::User> userList;
+	std::map<std::string,const users::User*> userList;
+
 };
 

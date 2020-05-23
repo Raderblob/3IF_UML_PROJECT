@@ -10,13 +10,10 @@ namespace users {
 		int logOut();
 
 
+        const std::string& getEmail() const;
 
 
-
-
-
-
-		//------------------------------------------------- Surcharge d'opérateurs
+        //------------------------------------------------- Surcharge d'opérateurs
 		bool operator <(const User& otherUser) const;
 		bool operator ==(const User& otherUser) const;
 		User& operator = (const User& otherUser);

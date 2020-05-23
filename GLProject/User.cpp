@@ -41,4 +41,8 @@ namespace users {
 	{
 	}
 
+    const std::string& User::getEmail() const {
+        return email;
+    }
+
 }

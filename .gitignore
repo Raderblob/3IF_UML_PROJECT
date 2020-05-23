@@ -17,6 +17,8 @@
 mono_crash.*
 
 # Build results
+.idea/
+cmake-build-debug/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -172,7 +174,7 @@ DocProject/Help/*.hhk
 DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
-
+CMakeLists.txt
 # Click-Once directory
 publish/
 
