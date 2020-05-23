@@ -12,9 +12,7 @@ namespace data {
 
 
 
-
-        Sensor(const std::string &sensorId, double score, bool privateSensor, const std::string &description,
-               const std::list<AirQualityData> &myData);
+        std::string toString()const;
 
 
 
@@ -22,6 +20,8 @@ namespace data {
 
 		//-------------------------------------------- Constructeurs - destructeur
 
+        Sensor(const std::string &sensorId, double score, bool privateSensor, const std::string &description,
+               const std::list<AirQualityData> &myData);
 
 
 		//------------------------------------------------------------------ PRIVE

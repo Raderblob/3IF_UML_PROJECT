@@ -12,7 +12,7 @@ public:
 
 
 
-
+    std::string toString()const;
 
 
 	//------------------------------------------------- Surcharge d'opérateurs

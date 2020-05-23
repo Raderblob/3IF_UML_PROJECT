@@ -10,3 +10,7 @@ AirCleaner::AirCleaner(const std::string& aCID, const std::string& descr)
 AirCleaner::~AirCleaner()
 {
 }
+
+std::string AirCleaner::toString() const {
+    return airCleanerId + ";" + description + ";" + (activated ? "1" : "0");
+}

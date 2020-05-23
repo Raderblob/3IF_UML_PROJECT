@@ -1,4 +1,7 @@
 #pragma once
+
+#include <string>
+
 namespace data {
 	class Coordinate
 	{
@@ -10,7 +13,7 @@ namespace data {
 
 
 
-
+        std::string toString()const;
 
 
 

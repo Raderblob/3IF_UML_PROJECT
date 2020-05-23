@@ -11,4 +11,8 @@ namespace data {
 	AirQualityData::~AirQualityData()
 	{
 	}
+
+    std::string AirQualityData::toString() const {
+        return attributeId + ";" + unit + ";" + description + ";" + position.toString();
+    }
 }

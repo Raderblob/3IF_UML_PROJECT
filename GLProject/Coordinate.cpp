@@ -31,4 +31,8 @@ namespace data {
 	Coordinate::~Coordinate()
 	{
 	}
+
+    std::string Coordinate::toString() const {
+        return std::to_string( longitude) + ";" + std::to_string( latitude);
+    }
 }

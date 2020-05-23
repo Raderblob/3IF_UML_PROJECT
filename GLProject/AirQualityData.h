@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include "Coordinate.h"
+#include "Sensor.h"
+
 namespace data {
 	class AirQualityData
 	{
@@ -11,7 +13,7 @@ namespace data {
 
 
 
-
+        std::string toString()const;
 
 
 
@@ -33,6 +35,7 @@ namespace data {
 		std::string unit;
 		std::string description;
 		Coordinate position;
+		data::Sensor* mySensor;
 	};
 
 }

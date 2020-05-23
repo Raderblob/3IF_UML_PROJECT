@@ -28,10 +28,14 @@ public:
     //------------------------------------------------------------------ PRIVE
 protected:
 	//----------------------------------------------------- Méthodes protégées
-    void loadSensors()const;
-	void loadCleaners()const;
+    void loadSensors();
+	void loadCleaners();
+	void saveSensors()const;
+	void saveCleaners()const;
+	void saveData() const;
 	//----------------------------------------------------- Attributs protégés
 	std::map<std::string,data::Sensor*> sensors;
-	std::set<std::string,AirCleaner*> cleaners;
+	std::map<std::string,AirCleaner*> cleaners;
+	std::vector<data::AirQualityData*> data;
 };
 
