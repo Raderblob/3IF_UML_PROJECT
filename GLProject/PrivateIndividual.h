@@ -1,5 +1,7 @@
 #pragma once
 #include "User.h"
+#include "Sensor.h"
+
 namespace users {
 	class PrivateIndividual :
 		public User
@@ -27,8 +29,8 @@ namespace users {
 		//----------------------------------------------------- Méthodes protégées
 
 		//----------------------------------------------------- Attributs protégés
-		std::string ID;
-		double numOfPoints;
+		data::Sensor* mySensor;
+
 	};
 }
 

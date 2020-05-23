@@ -13,11 +13,12 @@ namespace data {
 
 
 
+        Sensor(const std::string &sensorId, double score, bool privateSensor, const std::string &description,
+               const std::list<AirQualityData> &myData);
 
 
 
-
-		//------------------------------------------------- Surcharge d'opérateurs
+        //------------------------------------------------- Surcharge d'opérateurs
 
 		//-------------------------------------------- Constructeurs - destructeur
 
@@ -29,6 +30,8 @@ namespace data {
 
 		//----------------------------------------------------- Attributs protégés
 		std::string sensorID;
+		double score;
+		bool privateSensor;
 		std::string description;
 		std::list<AirQualityData> myData;
 	};

@@ -7,19 +7,7 @@
 using namespace std;
 UserManager::UserManager()
 {
-    fstream file;
-    file.open("dataset/users.csv",ios::in);
-    if(file.is_open()) {
-        while(!file.eof()){
-            string str;
-            file>>str;
-            vector<string> vec = Util::splitString(str,';');
-            if(vec.size()==6) {
-                userList.insert({vec.at(0), new users::User(vec.at(1), vec.at(2), vec.at(0), vec.at(3), vec.at(4))});
-            }
-        }
-    }
-    file.close();
+
 }
 
 UserManager::~UserManager()
@@ -79,4 +67,20 @@ void UserManager::showContents() const {
         std::cout<<it->second->getEmail()<<std::endl;
         it = ++it;
     }
+}
+
+void UserManager::loadUsers() {
+    fstream file;
+    file.open("dataset/users.csv",ios::in);
+    if(file.is_open()) {
+        while(!file.eof()){
+            string str;
+            file>>str;
+            vector<string> vec = Util::splitString(str,';');
+            if(vec.size()==6) {
+                userList.insert({vec.at(0), new users::User(vec.at(1), vec.at(2), vec.at(0), vec.at(3), vec.at(4))});
+            }
+        }
+    }
+    file.close();
 }

@@ -20,7 +20,7 @@ public:
 	int tryLogout(const users::User& user)const;
 
 	int saveUsers() const;
-
+    void loadUsers();
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
