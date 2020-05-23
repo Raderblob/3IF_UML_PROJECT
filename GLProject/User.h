@@ -12,6 +12,7 @@ namespace users {
 
         const std::string& getEmail() const;
 
+        std::string toString()const;
 
         //------------------------------------------------- Surcharge d'opérateurs
 		bool operator <(const User& otherUser) const;

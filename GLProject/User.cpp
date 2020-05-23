@@ -45,4 +45,8 @@ namespace users {
         return email;
     }
 
+     std::string User::toString() const {
+        return email + ";" + firstName + ";" + lastName + ";" + password + ";" + phoneNumber;
+    }
+
 }

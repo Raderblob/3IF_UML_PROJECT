@@ -2,10 +2,19 @@
 //
 
 #include <iostream>
+#include "AirQualityManager.h"
+#include "Util.h"
+void test(){
+    AirQualityManager airManager;
+   // airManager.userManager.addUser(new users::User("bob","Stand","splat@free","13","123"));
+    airManager.userManager.showContents();
+    airManager.userManager.saveUsers();
+}
 
 int main()
 {
     std::cout << "Hello World!\n";
+    test();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -11,7 +11,7 @@ public:
 
 
 
-
+    void saveEverything()const;
 
 
 
@@ -23,13 +23,15 @@ public:
     AirQualityManager();
 
     virtual ~AirQualityManager();
+    //----------------------------------------------------- Public attributes
+    UserManager userManager;
     //------------------------------------------------------------------ PRIVE
 protected:
 	//----------------------------------------------------- Méthodes protégées
-
+    void loadSensors()const;
+	void loadCleaners()const;
 	//----------------------------------------------------- Attributs protégés
-	UserManager userManager;
-	std::set<data::Sensor> sensors;
-	std::set<AirCleaner> cleaners;
+	std::map<std::string,data::Sensor*> sensors;
+	std::set<std::string,AirCleaner*> cleaners;
 };
 

@@ -177,6 +177,7 @@ DocProject/Help/html
 CMakeLists.txt
 # Click-Once directory
 publish/
+dataset/
 
 # Publish Web Output
 *.[Pp]ublish.xml

@@ -13,11 +13,13 @@ public:
 
 	int addUser(const users::User* user);
 
+	void showContents()const;
+
 	const users::User* tryLogin(const std::string& login, const std::string& password)const;
 
 	int tryLogout(const users::User& user)const;
 
-	int saveUsers();
+	int saveUsers() const;
 
 
 
