@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "AirQualityManager.h"
 //#include "AirQualityManager.h"
 //#include "Util.h"
 /*
