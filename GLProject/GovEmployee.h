@@ -1,6 +1,6 @@
 #pragma once
 #include "User.h"
-#include "AirQualityManager.h"
+class AirQualityManager;
 namespace users {
 	class GovEmployee :
 		public User

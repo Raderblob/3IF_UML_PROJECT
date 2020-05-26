@@ -2,6 +2,7 @@
 #include <string>
 #include <list>
 #include "AirQualityData.h"
+#include <vector>
 namespace data {
 	class Sensor
 	{
@@ -20,8 +21,6 @@ namespace data {
 
 		//-------------------------------------------- Constructeurs - destructeur
 
-        Sensor(const std::string &sensorId, double score, bool privateSensor, const std::string &description,
-               const std::list<AirQualityData> &myData);
 
 
 		//------------------------------------------------------------------ PRIVE
@@ -33,6 +32,6 @@ namespace data {
 		double score;
 		bool privateSensor;
 		std::string description;
-		std::list<AirQualityData> myData;
+		std::vector<AirQualityData> myData;
 	};
 }

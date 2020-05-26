@@ -5,10 +5,7 @@
 #include "AirQualityManager.h"
 #include "Util.h"
 void test(){
-    AirQualityManager airManager;
-   // airManager.userManager.addUser(new users::User("bob","Stand","splat@free","13","123"));
-    airManager.userManager.showContents();
-    airManager.userManager.saveUsers();
+
 }
 
 int main()

@@ -1,7 +1,8 @@
 #pragma once
 #include "User.h"
-#include "Sensor.h"
-
+namespace data {
+	class Sensor;
+}
 namespace users {
 	class PrivateIndividual :
 		public User

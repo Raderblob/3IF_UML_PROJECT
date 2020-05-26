@@ -1,7 +1,7 @@
 #pragma once
-#include <set>
 #include <map>
 #include "User.h"
+#include <vector>
 class UserManager
 {
 	//----------------------------------------------------------------- PUBLIC

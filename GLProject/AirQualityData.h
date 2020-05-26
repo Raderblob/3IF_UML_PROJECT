@@ -1,9 +1,10 @@
 #pragma once
 #include <string>
 #include "Coordinate.h"
-#include "Sensor.h"
+
 
 namespace data {
+	class Sensor;
 	class AirQualityData
 	{
 		//----------------------------------------------------------------- PUBLIC
