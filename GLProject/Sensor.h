@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include <list>
 #include "AirQualityData.h"
 #include <vector>
 namespace data {

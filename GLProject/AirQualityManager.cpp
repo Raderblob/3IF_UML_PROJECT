@@ -1,12 +1,5 @@
-#include <fstream>
 #include "AirQualityManager.h"
-#include "Util.h"
-#include "AirCleaner.h"
-#include "UserManager.h"
-#include "Sensor.h"
-#include "AirQualityData.h"
-#include <vector>
-#include <map>
+
 using namespace std;
 
 AirQualityManager::~AirQualityManager() {

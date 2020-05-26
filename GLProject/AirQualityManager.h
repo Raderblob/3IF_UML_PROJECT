@@ -1,5 +1,4 @@
 #pragma once
-#include <list>
 #include "UserManager.h"
 #include <vector>
 #include <map>
@@ -8,7 +7,6 @@ namespace data {
 	class AirQualityData;
 }
 class AirCleaner;
-
 class UserManager;
 class AirQualityManager
 {
