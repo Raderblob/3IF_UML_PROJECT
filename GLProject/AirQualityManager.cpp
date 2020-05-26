@@ -8,7 +8,7 @@ using namespace std;
 
 AirQualityManager::~AirQualityManager() {
     cout << "Deleting Data\n";
-    for (int i = 0; i < data.size(); ++i) {
+    for (int i = 0; i < (int)data.size(); ++i) {
         delete data.at(i);
     }
     
@@ -28,7 +28,7 @@ void AirQualityManager::loadEverything() {
 
 void AirQualityManager::print()
 {
-    for (int i = 0; i < data.size()/2; i++) {
+    for (int i = 0; i < (int)data.size()/2; i++) {
         std::cout<< data.at(i)->toString() + "\n";
     }
 }
