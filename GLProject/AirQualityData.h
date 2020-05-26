@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "Coordinate.h"
 
 
 namespace data {
@@ -23,7 +22,7 @@ namespace data {
 
 		//-------------------------------------------- Constructeurs - destructeur
 
-		AirQualityData(const std::string& aID, const std::string& unit, const std::string& descr,const double& longi, const double& lat);
+		AirQualityData(const int& aID, const std::string& unit, const std::string& descr);
 
 		virtual ~AirQualityData();
 
@@ -32,10 +31,9 @@ namespace data {
 		//----------------------------------------------------- Méthodes protégées
 
 		//----------------------------------------------------- Attributs protégés
-		std::string attributeId;
+		int attributeId;
 		std::string unit;
 		std::string description;
-		Coordinate position;
 		data::Sensor* mySensor;
 	};
 

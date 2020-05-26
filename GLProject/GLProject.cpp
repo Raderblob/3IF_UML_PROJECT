@@ -5,7 +5,9 @@
 #include "AirQualityManager.h"
 #include "Util.h"
 void test(){
-
+    AirQualityManager aManager;
+    aManager.loadEverything();
+    aManager.print();//only prints half
 }
 
 int main()

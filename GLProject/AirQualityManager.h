@@ -1,13 +1,12 @@
 #pragma once
 #include "UserManager.h"
-#include <vector>
-#include <map>
+#include "AirCleaner.h"
+#include "Sensor.h"
 namespace data {
-	class Sensor;
-	class AirQualityData;
+	//class Sensor;
+	//class AirQualityData;
 }
-class AirCleaner;
-class UserManager;
+//class AirCleaner;
 class AirQualityManager
 {
 	//----------------------------------------------------------------- PUBLIC
@@ -17,10 +16,10 @@ public:
 
 
     void saveEverything()const;
+	void loadEverything();
 
 
-
-
+	void print();
 
 	//------------------------------------------------- Surcharge d'opérateurs
 
@@ -42,6 +41,6 @@ protected:
 	//----------------------------------------------------- Attributs protégés
 	std::map<std::string,data::Sensor*> sensors;
 	std::map<std::string,AirCleaner*> cleaners;
-	//std::vector<data::AirQualityData*> data;
+	std::vector<data::AirQualityData*> data;
 };
 

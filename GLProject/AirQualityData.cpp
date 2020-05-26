@@ -1,11 +1,10 @@
 #include "AirQualityData.h"
 namespace data {
-	AirQualityData::AirQualityData(const std::string& aID, const std::string& u, const std::string& descr, const double& longi, const double& lat)
+	AirQualityData::AirQualityData(const int& aID, const std::string& u, const std::string& descr)
 	{
 		attributeId = aID;
 		unit = u;
 		description = descr;
-		position = Coordinate(longi, lat);
 
 	}
 	AirQualityData::~AirQualityData()
@@ -13,6 +12,6 @@ namespace data {
 	}
 
     std::string AirQualityData::toString() const {
-        return attributeId + ";" + unit + ";" + description + ";" + position.toString();
+        return attributeId + ";" + unit + ";" + description ;
     }
 }
