@@ -28,7 +28,7 @@ void AirQualityManager::loadEverything() {
 
 void AirQualityManager::print()
 {
-    for (int i = 0; i < (int)data.size()/2; i++) {
+    for (int i = 0; i < (int)data.size(); i++) {
         std::cout<< data.at(i)->toString() + "\n";
     }
 }

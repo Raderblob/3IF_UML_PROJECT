@@ -3,16 +3,7 @@
 
 #include <iostream>
 #include "AirQualityManager.h"
-//#include "AirQualityManager.h"
-//#include "Util.h"
-/*
-void test(){
-    AirQualityManager airManager;
-   // airManager.userManager.addUser(new users::User("bob","Stand","splat@free","13","123"));
-    airManager.userManager.showContents();
-    airManager.userManager.saveUsers();
-}
-*/
+
 using namespace std;
 
 void InterfaceLogin();
@@ -23,7 +14,7 @@ void InterfaceGovernment();
 void test(){
     AirQualityManager aManager;
     aManager.loadEverything();
-    aManager.print();//only prints half
+    aManager.print();
 }
 
 int main()
