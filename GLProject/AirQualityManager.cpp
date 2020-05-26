@@ -7,7 +7,11 @@
 using namespace std;
 
 AirQualityManager::~AirQualityManager() {
-
+    cout << "Deleting Data\n";
+    for (int i = 0; i < data.size(); ++i) {
+        delete data.at(i);
+    }
+    
 }
 
 AirQualityManager::AirQualityManager() {
