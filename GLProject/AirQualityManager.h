@@ -2,11 +2,6 @@
 #include "UserManager.h"
 #include "AirCleaner.h"
 #include "Sensor.h"
-namespace data {
-	//class Sensor;
-	//class AirQualityData;
-}
-//class AirCleaner;
 class AirQualityManager
 {
 	//----------------------------------------------------------------- PUBLIC

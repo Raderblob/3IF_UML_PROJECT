@@ -8,7 +8,9 @@ using namespace std;
 
 AirQualityManager::~AirQualityManager() {
     cout << "Deleting Data\n";
-
+    for (auto sensor : sensors) {
+        delete sensor.second;
+    }
     
 }
 
@@ -52,6 +54,9 @@ void AirQualityManager::loadSensors() {
     }
     dataFile.close();
 
+    for (auto sens : sensors) {
+
+    }
 }
 
 void AirQualityManager::loadCleaners() {
