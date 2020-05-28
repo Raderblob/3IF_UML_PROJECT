@@ -11,6 +11,22 @@ namespace data {
 	{
 		return longitude == otherCoord.longitude && latitude==otherCoord.latitude;
 	}
+	Coordinate Coordinate::operator+(const Coordinate& otherCoord) const
+	{
+		return(Coordinate(longitude + otherCoord.longitude, latitude + otherCoord.latitude));
+	}
+	Coordinate Coordinate::operator-(const Coordinate& otherCoord) const
+	{
+		return(Coordinate(longitude - otherCoord.longitude, latitude - otherCoord.latitude));
+	}
+	Coordinate Coordinate::operator/(const double& div) const
+	{
+		return(Coordinate(longitude/div, latitude/div));
+	}
+	Coordinate Coordinate::operator*(const double& mult) const
+	{
+		return(Coordinate(longitude * mult, latitude * mult));
+	}
 	Coordinate& Coordinate::operator=(const Coordinate& otherCoord)
 	{
 		longitude = otherCoord.longitude;
@@ -21,6 +37,12 @@ namespace data {
 	{
 		longitude = longd;
 		latitude = lat;
+	}
+
+	Coordinate::Coordinate(const Coordinate& aCoord)
+	{
+		longitude = aCoord.longitude;
+		latitude = aCoord.latitude;
 	}
 
 	Coordinate::Coordinate()
@@ -35,4 +57,12 @@ namespace data {
     std::string Coordinate::toString() const {
         return std::to_string( longitude) + ";" + std::to_string( latitude);
     }
+	const double& Coordinate::getLongitude() const
+	{
+		return longitude;
+	}
+	const double& Coordinate::getLatitude() const
+	{
+		return latitude;
+	}
 }

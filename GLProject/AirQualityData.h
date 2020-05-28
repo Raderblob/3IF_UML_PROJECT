@@ -22,7 +22,7 @@ namespace data {
 
 		//-------------------------------------------- Constructeurs - destructeur
 
-		AirQualityData(const int& aID, const std::string& unit, const std::string& descr);
+		AirQualityData(const std::string& unit, const std::string& descr,const data::Sensor* nSensor);
 
 		virtual ~AirQualityData();
 
@@ -34,7 +34,7 @@ namespace data {
 		int attributeId;
 		std::string unit;
 		std::string description;
-		data::Sensor* mySensor;
+		const data::Sensor* mySensor;
 	};
 
 }

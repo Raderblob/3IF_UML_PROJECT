@@ -1,10 +1,12 @@
 #include "AirQualityData.h"
 namespace data {
-	AirQualityData::AirQualityData(const int& aID, const std::string& u, const std::string& descr)
+	AirQualityData::AirQualityData(const std::string& u, const std::string& descr, const data::Sensor* nSensor)
 	{
-		attributeId = aID;
+		static int idCounter = 0;
+		attributeId = idCounter++;
 		unit = u;
 		description = descr;
+		mySensor = nSensor;
 
 	}
 	AirQualityData::~AirQualityData()

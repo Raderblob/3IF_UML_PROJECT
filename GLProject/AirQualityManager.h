@@ -39,8 +39,8 @@ protected:
 	void saveCleaners()const;
 	void saveData() const;
 	//----------------------------------------------------- Attributs protégés
-	std::map<std::string,data::Sensor*> sensors;
 	std::map<std::string,AirCleaner*> cleaners;
-	std::vector<data::AirQualityData*> data;
+	std::map<std::string,data::Sensor*> sensors;
+	std::map<data::Coordinate, std::vector<data::Sensor>> regionSensorLists;
 };
 

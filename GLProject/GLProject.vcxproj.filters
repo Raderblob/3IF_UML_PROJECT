@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\data">
+      <UniqueIdentifier>{d4766d46-3d49-40b8-aba8-b85f5e1d1a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\data">
+      <UniqueIdentifier>{e40e0986-07b3-4c66-8d4a-1bb7859777ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Users">
+      <UniqueIdentifier>{5aaf4ce9-140e-4792-8173-9451bf38bab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\users">
+      <UniqueIdentifier>{1ba79bf5-13ff-427e-9ae5-25c70c592f12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GLProject.cpp">
@@ -27,29 +39,29 @@
     <ClCompile Include="AirCleaner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AirQualityData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Coordinate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sensor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CompanyEmployee.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GovEmployee.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PrivateIndividual.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Util.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AirQualityData.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="Coordinate.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="Sensor.cpp">
+      <Filter>Source Files\data</Filter>
+    </ClCompile>
+    <ClCompile Include="CompanyEmployee.cpp">
+      <Filter>Source Files\users</Filter>
+    </ClCompile>
+    <ClCompile Include="GovEmployee.cpp">
+      <Filter>Source Files\users</Filter>
+    </ClCompile>
+    <ClCompile Include="PrivateIndividual.cpp">
+      <Filter>Source Files\users</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,29 +74,29 @@
     <ClInclude Include="AirCleaner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AirQualityData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Coordinate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sensor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CompanyEmployee.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GovEmployee.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PrivateIndividual.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Util.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="AirQualityData.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="Coordinate.h">
+      <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files\Users</Filter>
+    </ClInclude>
+    <ClInclude Include="GovEmployee.h">
+      <Filter>Header Files\Users</Filter>
+    </ClInclude>
+    <ClInclude Include="CompanyEmployee.h">
+      <Filter>Header Files\Users</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

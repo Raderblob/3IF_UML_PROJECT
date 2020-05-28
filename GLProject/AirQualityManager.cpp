@@ -8,9 +8,7 @@ using namespace std;
 
 AirQualityManager::~AirQualityManager() {
     cout << "Deleting Data\n";
-    for (int i = 0; i < (int)data.size(); ++i) {
-        delete data.at(i);
-    }
+
     
 }
 
@@ -23,17 +21,36 @@ void AirQualityManager::saveEverything() const {
 }
 
 void AirQualityManager::loadEverything() {
+    loadSensors();
     loadData();
 }
 
 void AirQualityManager::print()
 {
-    for (int i = 0; i < (int)data.size(); i++) {
-        std::cout<< data.at(i)->toString() + "\n";
+    for (auto sensor :sensors) {
+        std::cout << "Sensor " << std::endl;
+        for (auto d : sensor.second->getData()) {
+             std::cout<<d->toString() + "\n";
+        }
+       
     }
 }
 
 void AirQualityManager::loadSensors() {
+    ifstream dataFile;
+    dataFile.open("dataset/sensors.csv");
+    int idCounter = 0;
+    if (dataFile.is_open()) {
+        while (!dataFile.eof()) {
+            string str;
+            getline(dataFile, str, '\n');
+            vector<string> vec = Util::splitString(str, ';');
+            if (vec.size() == 4) {
+                sensors.insert({ vec.at(0),new data::Sensor(vec.at(0), 0, false, data::Coordinate(std::stoi(vec.at(1)), std::stoi(vec.at(2))),"") });
+            }
+        }
+    }
+    dataFile.close();
 
 }
 
@@ -45,14 +62,15 @@ void AirQualityManager::loadData()
 {
 	ifstream dataFile;
 	dataFile.open("dataset/measurements.csv");
-    int idCounter = 0;
     if (dataFile.is_open()) {
         while (!dataFile.eof()) {
             string str;
             getline(dataFile, str, '\n');
             vector<string> vec= Util::splitString(str, ';');
             if (vec.size() == 5) {
-                data.push_back(new data::AirQualityData(idCounter++, vec.at(2), vec.at(0)));
+                data::Sensor* sensor = sensors.find(vec.at(1))->second;
+                data::AirQualityData* nData = new data::AirQualityData(vec.at(2), vec.at(0), sensor);
+                sensor->addData(nData);
             }
         }
     }
