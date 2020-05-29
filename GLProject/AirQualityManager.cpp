@@ -104,17 +104,37 @@ void AirQualityManager::loadData()
 	ifstream dataFile;
 	dataFile.open("dataset/measurements.csv");
     data::Sensor* sensor = nullptr;
+    data::AirQualityData* cData = nullptr;
     if (dataFile.is_open()) {
         while (!dataFile.eof()) {
             string str;
             getline(dataFile, str, '\n');
             vector<string> vec = Util::splitString(str, ';');
             if (vec.size() == 5) {
+                data::Reading* nReading = new data::Reading(vec.at(2), std::stod(vec.at(3)));
+
+
                 if (sensor == nullptr || sensor->getId() != vec.at(1)) {
+                    if (cData != nullptr) {
+                        sensor->addData(cData);
+                        cData = nullptr;
+                    }
                     sensor = sensors.find(vec.at(1))->second;
                 }
-                data::AirQualityData* nData = new data::AirQualityData(vec.at(2), vec.at(0), sensor, std::stod(vec.at(3)));
-                sensor->addData(nData);
+
+
+
+                unsigned long readTime = Util::dateToLong(vec.at(0));
+                if (cData == nullptr|| readTime != cData->getTime() || cData->getSensorId() != vec.at(1)) {
+                    if (cData != nullptr) {
+                        sensor->addData(cData);
+                    }
+                    cData = new data::AirQualityData(readTime, sensor, nReading);
+                }
+                else {
+                    cData->addReading(nReading);
+                }
+
             }
         }
     }

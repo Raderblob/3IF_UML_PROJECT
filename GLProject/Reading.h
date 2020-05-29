@@ -1,43 +1,32 @@
 #pragma once
 #include <string>
-#include "Reading.h"
-#include <vector>
-
 namespace data {
-	class Sensor;
-	class AirQualityData
+	enum class READINGTYPE
+	{
+		O3,NO2,SO2,PM10
+	};
+
+	class Reading
 	{
 		//----------------------------------------------------------------- PUBLIC
 	public:
 		//----------------------------------------------------- Méthodes publiques
 
-
-
-
-        std::string toString()const;
-		const unsigned long& getTime()const;
-		void addReading(Reading* nReading);
-		const std::string& getSensorId()const;
+		const READINGTYPE& getType()const;
+		const double& getValue()const;
+		
 
 		//------------------------------------------------- Surcharge d'opérateurs
 
 		//-------------------------------------------- Constructeurs - destructeur
-
-		AirQualityData( const unsigned long& mTime,const data::Sensor* nSensor,Reading* mReading);
-
-		virtual ~AirQualityData();
+		Reading(const std::string& type, const double& val);
 
 		//------------------------------------------------------------------ PRIVE
 	protected:
 		//----------------------------------------------------- Méthodes protégées
-
+		READINGTYPE type;
+		double value;
 		//----------------------------------------------------- Attributs protégés
-		std::vector<Reading*> readings;
-		int attributeId;
-		unsigned long time;
-		const data::Sensor* mySensor;
-
 	};
-
 }
 

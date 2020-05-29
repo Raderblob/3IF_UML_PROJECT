@@ -156,6 +156,7 @@
     <ClCompile Include="GovEmployee.cpp" />
     <ClCompile Include="PrivateIndividual.cpp" />
     <ClCompile Include="QuadTree.cpp" />
+    <ClCompile Include="Reading.cpp" />
     <ClCompile Include="Sensor.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserManager.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="GovEmployee.h" />
     <ClInclude Include="PrivateIndividual.h" />
     <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="Reading.h" />
     <ClInclude Include="Sensor.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserManager.h" />
