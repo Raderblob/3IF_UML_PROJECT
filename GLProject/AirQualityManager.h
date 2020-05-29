@@ -36,6 +36,6 @@ protected:
 	//----------------------------------------------------- Attributs protégés
 	std::map<std::string,AirCleaner*> cleaners;
 	std::map<std::string,data::Sensor*> sensors;
-	std::map<data::Coordinate, std::vector<data::Sensor>> regionSensorLists;
+	std::map<data::Coordinate, std::vector<data::Sensor*>> regionSensorLists;
 };
 

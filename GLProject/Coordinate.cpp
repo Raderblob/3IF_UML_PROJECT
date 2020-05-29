@@ -65,4 +65,8 @@ namespace data {
 	{
 		return latitude;
 	}
+	Coordinate Coordinate::getGridCoords(const int& gridSize) const
+	{
+		return Coordinate(int(longitude/gridSize),int(latitude/gridSize));
+	}
 }

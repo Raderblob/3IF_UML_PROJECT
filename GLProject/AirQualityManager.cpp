@@ -30,11 +30,17 @@ void AirQualityManager::loadEverything() {
 void AirQualityManager::print()
 {
     for (auto sensor :sensors) {
-        std::cout << "Sensor " << std::endl;
+        std::cout << "Sensor " << sensor.first << std::endl;
         for (auto d : sensor.second->getData()) {
              std::cout<<d->toString() + "\n";
         }
-       
+    }
+
+    for (auto gridSquare : regionSensorLists) {
+        std::cout << gridSquare.first.toString() << std::endl;
+        for (auto sensor : gridSquare.second) {
+            std::cout << sensor->getId() << " " <<sensor->getPosition().toString() << std::endl;
+        }
     }
 }
 
@@ -55,7 +61,16 @@ void AirQualityManager::loadSensors() {
     dataFile.close();
 
     for (auto sens : sensors) {
-
+        data::Coordinate gridCoord = sens.second->getPosition().getGridCoords(2);
+        auto el = regionSensorLists.find(gridCoord);
+        if (el == regionSensorLists.end()) {
+            vector<data::Sensor*> newList;
+            newList.push_back(sens.second);
+            regionSensorLists.insert({ gridCoord,newList});
+        }
+        else {
+            el->second.push_back(sens.second);
+        }
     }
 }
 
