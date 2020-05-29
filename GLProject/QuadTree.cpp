@@ -1,6 +1,6 @@
 #include "QuadTree.h"
 #include <stdexcept>
-#include <math.h>
+#include <cmath>
 #include <iostream>
 namespace data {
 	const std::vector<Sensor*>& QuadTree::searchPoint(const Coordinate& p, const int& area)const
@@ -117,7 +117,7 @@ namespace data {
 		}
 
 		Coordinate diff = maxVal - minVal;
-		int size = std::_Max_value(diff.getLatitude(), diff.getLongitude()) +10;
+		int size = std::max(diff.getLatitude(), diff.getLongitude()) +10;
 		int multiple = log2(size) +1;
 		size = pow(2, multiple);
 		loadOriginTree(minVal - 5, size, mData);
