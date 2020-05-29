@@ -4,6 +4,7 @@
 #include "Sensor.h"
 #include "AirQualityData.h"
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ AirQualityManager::~AirQualityManager() {
 }
 
 AirQualityManager::AirQualityManager() {
-
+    sensorTree = nullptr;
 }
 
 void AirQualityManager::saveEverything() const {
@@ -24,8 +25,14 @@ void AirQualityManager::saveEverything() const {
 }
 
 void AirQualityManager::loadEverything() {
+    auto startTime = std::chrono::steady_clock::now();
     loadSensors();
+    auto endTime = std::chrono::steady_clock::now();
+    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "[ms]" << std::endl;
+    startTime = std::chrono::steady_clock::now();
     loadData();
+    endTime = std::chrono::steady_clock::now();
+    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "[ms]" << std::endl;
 }
 
 void AirQualityManager::print()
@@ -67,6 +74,7 @@ void AirQualityManager::loadSensors() {
     }
     dataFile.close();
 
+
     for (auto sens : sensors) {
         data::Coordinate gridCoord = sens.second->getPosition().getGridCoords(2);
         auto el = regionSensorLists.find(gridCoord);
@@ -95,14 +103,17 @@ void AirQualityManager::loadData()
 {
 	ifstream dataFile;
 	dataFile.open("dataset/measurements.csv");
+    data::Sensor* sensor = nullptr;
     if (dataFile.is_open()) {
         while (!dataFile.eof()) {
             string str;
             getline(dataFile, str, '\n');
-            vector<string> vec= Util::splitString(str, ';');
+            vector<string> vec = Util::splitString(str, ';');
             if (vec.size() == 5) {
-                data::Sensor* sensor = sensors.find(vec.at(1))->second;
-                data::AirQualityData* nData = new data::AirQualityData(vec.at(2), vec.at(0), sensor);
+                if (sensor == nullptr || sensor->getId() != vec.at(1)) {
+                    sensor = sensors.find(vec.at(1))->second;
+                }
+                data::AirQualityData* nData = new data::AirQualityData(vec.at(2), vec.at(0), sensor, std::stod(vec.at(3)));
                 sensor->addData(nData);
             }
         }

@@ -22,7 +22,7 @@ namespace data {
 
 		//-------------------------------------------- Constructeurs - destructeur
 
-		AirQualityData(const std::string& unit, const std::string& descr,const data::Sensor* nSensor);
+		AirQualityData(const std::string& unit, const std::string& descr,const data::Sensor* nSensor,const double& val);
 
 		virtual ~AirQualityData();
 
@@ -33,7 +33,8 @@ namespace data {
 		//----------------------------------------------------- Attributs protégés
 		int attributeId;
 		std::string unit;
-		std::string description;
+		double value;
+		unsigned long time;
 		const data::Sensor* mySensor;
 	};
 

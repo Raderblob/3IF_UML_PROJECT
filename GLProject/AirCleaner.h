@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include "Coordinate.h"
 class AirCleaner
 {
 	//----------------------------------------------------------------- PUBLIC
@@ -30,4 +30,6 @@ protected:
 	std::string airCleanerId;
 	std::string description;
 	bool activated;
+	data::Coordinate position;
+	unsigned long time;
 };
