@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "AirQualityManager.h"
-
 using namespace std;
 
 void InterfaceLogin();
@@ -15,6 +14,10 @@ void test(){
     AirQualityManager aManager;
     aManager.loadEverything();
     aManager.print();
+
+
+
+    cout << "test" << endl;
 }
 
 int main()

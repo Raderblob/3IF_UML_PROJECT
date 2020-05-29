@@ -2,6 +2,7 @@
 #include "UserManager.h"
 #include "AirCleaner.h"
 #include "Sensor.h"
+#include "QuadTree.h"
 class AirQualityManager
 {
 	//----------------------------------------------------------------- PUBLIC
@@ -37,5 +38,6 @@ protected:
 	std::map<std::string,AirCleaner*> cleaners;
 	std::map<std::string,data::Sensor*> sensors;
 	std::map<data::Coordinate, std::vector<data::Sensor*>> regionSensorLists;
+	data::QuadTree* sensorTree;
 };
 

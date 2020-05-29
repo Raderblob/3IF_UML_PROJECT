@@ -4,6 +4,7 @@
 #include "Sensor.h"
 #include "AirQualityData.h"
 #include <iostream>
+
 using namespace std;
 
 AirQualityManager::~AirQualityManager() {
@@ -11,7 +12,7 @@ AirQualityManager::~AirQualityManager() {
     for (auto sensor : sensors) {
         delete sensor.second;
     }
-    
+    delete sensorTree;
 }
 
 AirQualityManager::AirQualityManager() {
@@ -40,6 +41,12 @@ void AirQualityManager::print()
         std::cout << gridSquare.first.toString() << std::endl;
         for (auto sensor : gridSquare.second) {
             std::cout << sensor->getId() << " " <<sensor->getPosition().toString() << std::endl;
+        }
+    }
+
+    for (int i = 0; i < 100; i += 5) {
+        for (int j = 0; j < 100; j += 5) {
+            sensorTree->searchPoint(data::Coordinate(i, j), 5);
         }
     }
 }
@@ -72,6 +79,12 @@ void AirQualityManager::loadSensors() {
             el->second.push_back(sens.second);
         }
     }
+    vector<data::Sensor*> bruteSensors;
+    for (auto sens : sensors) {
+        bruteSensors.push_back(sens.second);
+    }
+    sensorTree = new data::QuadTree(bruteSensors);
+
 }
 
 void AirQualityManager::loadCleaners() {
