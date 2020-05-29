@@ -117,7 +117,7 @@ namespace data {
 		}
 
 		Coordinate diff = maxVal - minVal;
-		int size = std::max(diff.getLatitude(), diff.getLongitude()) +10;
+		int size = (diff.getLatitude() > diff.getLongitude() ? diff.getLatitude() : diff.getLatitude())+10;
 		int multiple = log2(size) +1;
 		size = pow(2, multiple);
 		loadOriginTree(minVal - 5, size, mData);
