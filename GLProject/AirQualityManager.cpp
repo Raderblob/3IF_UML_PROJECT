@@ -91,7 +91,7 @@ void AirQualityManager::loadSensors() {
     for (auto sens : sensors) {
         bruteSensors.push_back(sens.second);
     }
-    sensorTree = new data::QuadTree(bruteSensors);
+    sensorTree = new data::tree::QuadTree(bruteSensors);
 
 }
 
