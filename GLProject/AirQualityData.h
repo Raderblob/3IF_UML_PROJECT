@@ -18,6 +18,12 @@ namespace data {
 		const unsigned long& getTime()const;
 		void addReading(Reading* nReading);
 		const std::string& getSensorId()const;
+		int getAtmo()const;
+		const double& getO3()const;
+		const double& getSO2()const;
+		const double& getNO2()const;
+		const double& getPM10()const;
+
 
 		//------------------------------------------------- Surcharge d'opérateurs
 

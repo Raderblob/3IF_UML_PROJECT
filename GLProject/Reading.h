@@ -12,9 +12,9 @@ namespace data {
 	public:
 		//----------------------------------------------------- Méthodes publiques
 
-		const READINGTYPE& getType()const;
+		std::string getType()const;
 		const double& getValue()const;
-		
+		const READINGTYPE& getEType()const;
 
 		//------------------------------------------------- Surcharge d'opérateurs
 

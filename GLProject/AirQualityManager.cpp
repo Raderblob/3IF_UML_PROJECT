@@ -137,6 +137,7 @@ void AirQualityManager::loadData()
 
             }
         }
+        sensor->addData(cData);
     }
     dataFile.close();
 }
