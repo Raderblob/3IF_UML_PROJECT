@@ -35,6 +35,23 @@ void AirQualityManager::loadEverything() {
     std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "[ms]" << std::endl;
 }
 
+double AirQualityManager::getMeanAirQuality(const data::Coordinate& centerPoint, const double& totalWidth) const
+{
+    vector<data::Sensor*> sensorsInArea = sensorTree->searchPoint(centerPoint, totalWidth);
+    int totalIndex = 0, counter = 0;
+    for (auto sensor : sensorsInArea) {
+        for (auto internalData : sensor->getData()) {
+            counter++;
+            totalIndex += internalData->getAtmo();
+        }
+        
+    }
+    return ((double)totalIndex) / ((double)counter);
+
+}
+
+
+
 void AirQualityManager::print()
 {
     for (auto sensor :sensors) {
@@ -51,11 +68,13 @@ void AirQualityManager::print()
         }
     }
 
-    for (int i = 0; i < 100; i += 5) {
-        for (int j = 0; j < 100; j += 5) {
-            sensorTree->searchPoint(data::Coordinate(i, j), 5);
+    int counter = 0;
+    for (double i = 40; i < 50; i += 0.5) {
+        for (double j = -2; j < 10; j += 0.5) {
+            counter += sensorTree->searchPoint(data::Coordinate(i, j), 0.5).size();
         }
     }
+    cout << counter << endl;
 }
 
 void AirQualityManager::loadSensors() {
@@ -68,7 +87,7 @@ void AirQualityManager::loadSensors() {
             getline(dataFile, str, '\n');
             vector<string> vec = Util::splitString(str, ';');
             if (vec.size() == 4) {
-                sensors.insert({ vec.at(0),new data::Sensor(vec.at(0), 0, false, data::Coordinate(std::stoi(vec.at(1)), std::stoi(vec.at(2))),"") });
+                sensors.insert({ vec.at(0),new data::Sensor(vec.at(0), 0, false, data::Coordinate(std::stod(vec.at(1)), std::stod(vec.at(2))),"") });
             }
         }
     }

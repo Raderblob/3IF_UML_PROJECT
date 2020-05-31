@@ -4,7 +4,7 @@
 #include <iostream>
 namespace data {
 	namespace tree {
-		std::vector<Sensor*> QuadTree::searchPoint(const Coordinate& p, const int& area)const
+		std::vector<Sensor*> QuadTree::searchPoint(const Coordinate& p, const double& area)const
 		{
 			Coordinate upperLeftCoord = p - double(area)/2.0;
 			Coordinate lowerRightCoord = p + double(area) /2.0;
@@ -16,9 +16,10 @@ namespace data {
 			bool upperRightIn = upperRightCoord.inSquare(position, quadSize);
 			bool lowerLeftIn = lowerLeftCoord.inSquare(position, quadSize);
 			if (!upperLeftIn || !lowerRightIn || !upperRightIn || !lowerLeftIn) {
-				std::cout << "Point " << upperLeftCoord.toString() << " not in main origin Quad " << position.toString() + " " + std::to_string(quadSize) << std::endl;
+
 				std::vector<Sensor*> res = data;
 				if (lowerLeftIn || lowerRightIn || upperRightIn || upperLeftIn) {
+					//std::cout << "Not in main origin Quad " << position.toString() + " " + std::to_string(quadSize) << std::endl;
 					res.clear();
 					AreasScanned areas;
 					if (upperLeftIn && !areas.upperLeft) {
@@ -79,8 +80,8 @@ namespace data {
 						i--;
 					}
 				}
-				std::cout << "Found Data for " << p.toString()<<" data size:" << res.size() << std::endl;
-				std::cout << cnt << std::endl;
+				std::cout << "Found Data for " << p.toString()<<" sensors size:" << res.size() << std::endl;
+				//std::cout << cnt << std::endl;
 
 				return res;
 			}
@@ -104,11 +105,11 @@ namespace data {
 		{
 			return position + quadSize;
 		}
-		const std::vector<Sensor*>& QuadTree::searchPointWithoutCheck(const Coordinate& p, const int& area, const TREETYPE& quadrant,AreasScanned& areas)const
+		const std::vector<Sensor*>& QuadTree::searchPointWithoutCheck(const Coordinate& p, const double& area, const TREETYPE& quadrant,AreasScanned& areas)const
 		{
 
-			if (area > quadSize / 2 && area < quadSize) {
-				std::cout << "Found point " << p.toString() << " in " << position.toString() + " " + std::to_string(quadSize) << std::endl;
+			if (area > quadSize / 2 && area <= quadSize) {
+				//std::cout << "Found point " << p.toString() << " in " << position.toString() + " " + std::to_string(quadSize) << std::endl;
 				Coordinate lowerRightCoord, lowerLeftCoord, upperRightCoord, upperLeftCoord;
 				switch (quadrant)
 				{

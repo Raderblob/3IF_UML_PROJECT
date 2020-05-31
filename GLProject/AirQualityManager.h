@@ -13,7 +13,7 @@ public:
 
     void saveEverything()const;
 	void loadEverything();
-
+	double getMeanAirQuality(const data::Coordinate& centerPoint, const double& totalWidth)const;
 
 	void print();
 

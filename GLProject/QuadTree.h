@@ -23,7 +23,7 @@ namespace data {
 		public:
 			//----------------------------------------------------- Méthodes publiques
 
-			std::vector<Sensor*> searchPoint(const Coordinate& p, const int& area)const;
+			std::vector<Sensor*> searchPoint(const Coordinate& p, const double& area)const;
 
 			const Coordinate& getUpperLeft()const;
 			Coordinate getLowerLeft()const;
@@ -45,7 +45,7 @@ namespace data {
 		protected:
 			//----------------------------------------------------- Méthodes protégées
 			void loadOriginTree(const Coordinate& mPos, const int& mSize, const std::vector<Sensor*>& mData);
-			const std::vector<Sensor*>& searchPointWithoutCheck(const Coordinate& p, const int& area, const TREETYPE& quadrant,AreasScanned& areas)const;
+			const std::vector<Sensor*>& searchPointWithoutCheck(const Coordinate& p, const double& area, const TREETYPE& quadrant,AreasScanned& areas)const;
 			//----------------------------------------------------- Attributs protégés
 			TREETYPE type;
 			const QuadTree* parent;

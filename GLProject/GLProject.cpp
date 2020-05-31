@@ -14,8 +14,11 @@ void test(){
     AirQualityManager aManager;
     aManager.loadEverything();
     aManager.print();
-
-
+    cout << "Testing air quality in different zones" << endl;
+    cout << aManager.getMeanAirQuality(data::Coordinate(47, 1), 1) << endl;
+    cout << aManager.getMeanAirQuality(data::Coordinate(45.3333, 1.3333), 1) << endl;
+    cout << aManager.getMeanAirQuality(data::Coordinate(46.666, 3.6666), 1) << endl;
+    cout << aManager.getMeanAirQuality(data::Coordinate(47.6, 5.3), 1) << endl;
 
     cout << "test" << endl;
 }
