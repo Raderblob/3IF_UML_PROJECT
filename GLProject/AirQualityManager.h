@@ -2,11 +2,7 @@
 #include "UserManager.h"
 #include "AirCleaner.h"
 #include "Sensor.h"
-namespace data {
-	//class Sensor;
-	//class AirQualityData;
-}
-//class AirCleaner;
+#include "QuadTree.h"
 class AirQualityManager
 {
 	//----------------------------------------------------------------- PUBLIC
@@ -17,8 +13,9 @@ public:
 
     void saveEverything()const;
 	void loadEverything();
-
-
+	double getMeanAirQuality(const data::Coordinate& centerPoint, const double& totalWidth)const;
+	double getMeanAirQualityWithDate(const data::Coordinate& centerPoint, const double& totalWidth , const std::string& startTime , const std::string& endTime)const;
+	double getMeanAirQualityWithDate(const data::Coordinate& centerPoint, const double& totalWidth, const unsigned long& startTime, const unsigned long& endTime)const;
 	void print();
 
 	//------------------------------------------------- Surcharge d'opérateurs
@@ -39,8 +36,9 @@ protected:
 	void saveCleaners()const;
 	void saveData() const;
 	//----------------------------------------------------- Attributs protégés
-	std::map<std::string,data::Sensor*> sensors;
 	std::map<std::string,AirCleaner*> cleaners;
-	std::vector<data::AirQualityData*> data;
+	std::map<std::string,data::Sensor*> sensors;
+	std::map<data::Coordinate, std::vector<data::Sensor*>> regionSensorLists;
+	data::tree::QuadTree* sensorTree;
 };
 

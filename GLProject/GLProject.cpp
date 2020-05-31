@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "AirQualityManager.h"
-
 using namespace std;
 
 void InterfaceLogin();
@@ -15,6 +14,13 @@ void test(){
     AirQualityManager aManager;
     aManager.loadEverything();
     aManager.print();
+    cout << "Testing air quality in different zones" << endl;
+    cout << aManager.getMeanAirQuality(data::Coordinate(47, 1), 1) << endl;
+    cout << aManager.getMeanAirQuality(data::Coordinate(46.666, 3.6666), 1) << endl;
+    cout << aManager.getMeanAirQuality(data::Coordinate(47.6, 5.3), 1) << endl;
+    cout << aManager.getMeanAirQuality(data::Coordinate(45.3333, 1.3333), 1) << endl;
+    cout << aManager.getMeanAirQualityWithDate(data::Coordinate(45.333, 1.3333), 1,"2019-02-01 12:00:00","2019-03-01 00:00:00") << endl;
+    cout << "test" << endl;
 }
 
 int main()
