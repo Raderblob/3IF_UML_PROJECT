@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-
+#include "Reading.h"
+#include <vector>
 
 namespace data {
 	class Sensor;
@@ -14,15 +15,22 @@ namespace data {
 
 
         std::string toString()const;
-
-
+		const unsigned long& getTime()const;
+		void addReading(Reading* nReading);
+		const std::string& getSensorId()const;
+		int getAtmo()const;
+		const double& getO3()const;
+		const double& getSO2()const;
+		const double& getNO2()const;
+		const double& getPM10()const;
 
 
 		//------------------------------------------------- Surcharge d'opérateurs
-
+		bool operator <(const unsigned long& time) const;
+		bool operator <(const AirQualityData& oData) const;
 		//-------------------------------------------- Constructeurs - destructeur
 
-		AirQualityData(const int& aID, const std::string& unit, const std::string& descr);
+		AirQualityData( const unsigned long& mTime,const data::Sensor* nSensor,Reading* mReading);
 
 		virtual ~AirQualityData();
 
@@ -31,10 +39,11 @@ namespace data {
 		//----------------------------------------------------- Méthodes protégées
 
 		//----------------------------------------------------- Attributs protégés
+		std::vector<Reading*> readings;
 		int attributeId;
-		std::string unit;
-		std::string description;
-		data::Sensor* mySensor;
+		unsigned long time;
+		const data::Sensor* mySensor;
+
 	};
 
 }
