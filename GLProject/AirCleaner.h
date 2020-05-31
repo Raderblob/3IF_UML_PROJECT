@@ -13,7 +13,9 @@ public:
 
 
     std::string toString()const;
-
+	const data::Coordinate& getPosition()const;
+	const unsigned long& getTime1()const;
+	const unsigned long& getTime2()const;
 
 	//------------------------------------------------- Surcharge d'opérateurs
 

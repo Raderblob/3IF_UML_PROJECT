@@ -47,7 +47,7 @@ namespace data {
 						i--;
 					}
 				}
-				std::cout << "Number found " << res.size()<<std::endl;
+				//std::cout << "Number found " << res.size()<<std::endl;
 				return res;
 			}
 			else {
@@ -80,7 +80,7 @@ namespace data {
 						i--;
 					}
 				}
-				std::cout << "Found Data for " << p.toString()<<" sensors size:" << res.size() << std::endl;
+				//std::cout << "Found Data for " << p.toString()<<" sensors size:" << res.size() << std::endl;
 				//std::cout << cnt << std::endl;
 
 				return res;

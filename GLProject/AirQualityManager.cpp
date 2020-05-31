@@ -76,6 +76,30 @@ double AirQualityManager::getMeanAirQualityWithDate(const data::Coordinate& cent
     return ((double)totalIndex) / ((double)counter);
 }
 
+const std::map<std::string, AirCleaner*>& AirQualityManager::getCleaners() const
+{
+    return cleaners;
+}
+
+double AirQualityManager::getAreaOfEffectOfCleaner(const AirCleaner& cl,const double& step ,const bool& ratio, double maxOrRatio) const
+{
+    double startingArea = 0.5;
+    double avgIndex;
+    double nIndex;
+    if (!ratio) {
+        nIndex = 0.1;
+    }
+    do {
+        startingArea += step;
+        nIndex = getMeanAirQualityWithDate(cl.getPosition(), startingArea, cl.getTime1(), cl.getTime2());
+        if (ratio) {
+            avgIndex = getMeanAirQuality(cl.getPosition(), startingArea);
+        }
+    } while (( ratio && ( nIndex<avgIndex/maxOrRatio)) ||( !ratio &&(nIndex<=maxOrRatio)));
+    startingArea -= step;
+    return (startingArea==0.5?0:startingArea);
+}
+
 
 
 void AirQualityManager::print()

@@ -16,6 +16,8 @@ public:
 	double getMeanAirQuality(const data::Coordinate& centerPoint, const double& totalWidth)const;
 	double getMeanAirQualityWithDate(const data::Coordinate& centerPoint, const double& totalWidth , const std::string& startTime , const std::string& endTime)const;
 	double getMeanAirQualityWithDate(const data::Coordinate& centerPoint, const double& totalWidth, const unsigned long& startTime, const unsigned long& endTime)const;
+	const std::map<std::string, AirCleaner*>& getCleaners()const;
+	double getAreaOfEffectOfCleaner(const AirCleaner& cl,const double& step,const bool& ratio,double maxOrRatio)const;
 	void print();
 
 	//------------------------------------------------- Surcharge d'opérateurs

@@ -15,3 +15,18 @@ AirCleaner::~AirCleaner()
 std::string AirCleaner::toString() const {
     return airCleanerId + ";" +  position.toString() +";" + std::to_string(time1) + ";" + std::to_string(time2) + ";" + (activated ? "1" : "0");
 }
+
+const data::Coordinate& AirCleaner::getPosition() const
+{
+	return position;
+}
+
+const unsigned long& AirCleaner::getTime1() const
+{
+	return time1;
+}
+
+const unsigned long& AirCleaner::getTime2() const
+{
+	return time2;
+}
