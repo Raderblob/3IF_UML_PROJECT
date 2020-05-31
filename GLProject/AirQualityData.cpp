@@ -203,4 +203,12 @@ namespace data {
 		}
 		throw std::invalid_argument("measure not in database");
 	}
+	bool AirQualityData::operator<(const unsigned long& time) const
+	{
+		return this->time<time;
+	}
+	bool AirQualityData::operator<(const AirQualityData& oData) const
+	{
+		return this->time<oData.time;
+	}
 }

@@ -26,7 +26,8 @@ namespace data {
 
 
 		//------------------------------------------------- Surcharge d'opérateurs
-
+		bool operator <(const unsigned long& time) const;
+		bool operator <(const AirQualityData& oData) const;
 		//-------------------------------------------- Constructeurs - destructeur
 
 		AirQualityData( const unsigned long& mTime,const data::Sensor* nSensor,Reading* mReading);

@@ -18,7 +18,7 @@ public:
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	//-------------------------------------------- Constructeurs - destructeur
-	AirCleaner(const std::string& aCID, const std::string& descr);
+	AirCleaner(const std::string& aCID,const data::Coordinate mPos, const unsigned long& t1, unsigned long t2);
 
 	virtual ~AirCleaner();
 
@@ -27,9 +27,8 @@ protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
+	unsigned long time1, time2;
 	std::string airCleanerId;
-	std::string description;
 	bool activated;
 	data::Coordinate position;
-	unsigned long time;
 };

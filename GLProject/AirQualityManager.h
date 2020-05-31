@@ -14,7 +14,8 @@ public:
     void saveEverything()const;
 	void loadEverything();
 	double getMeanAirQuality(const data::Coordinate& centerPoint, const double& totalWidth)const;
-
+	double getMeanAirQualityWithDate(const data::Coordinate& centerPoint, const double& totalWidth , const std::string& startTime , const std::string& endTime)const;
+	double getMeanAirQualityWithDate(const data::Coordinate& centerPoint, const double& totalWidth, const unsigned long& startTime, const unsigned long& endTime)const;
 	void print();
 
 	//------------------------------------------------- Surcharge d'opérateurs
