@@ -4,6 +4,10 @@
 
 #include "Util.h"
 #include <sstream>
+#include <iostream>
+static std::chrono::steady_clock::time_point startTime;
+
+
 std::vector<std::string> Util::splitString(const std::string &str, const char &del) {
     std::vector<std::string> res;
     size_t endL,startL;
@@ -58,6 +62,20 @@ unsigned long Util::dateToLong(const std::string& str)
     descrStream >> year >> tmp >> month >> tmp >> day >> hour >> tmp >> minute >> tmp >> second;
 
     year -= 2000;
-    return second + minute * 60ul + hour * 3600ul + day * 86400ul + month * 86400ul * 30.4167 + year * 86400l * 365l;
+    return second + minute * 60ul + hour * 3600ul + day * 86400ul + month * (unsigned long)(86400ul * 30.4167) + year * 86400ul * 365ul;
+}
+
+void Util::startTimer()
+{
+    startTime = std::chrono::steady_clock::now();
+    std::cout << "Start Clock" << std::endl;
+}
+
+long long Util::stopTimer()
+{
+    auto endTime = std::chrono::steady_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
+    std::cout << "Time difference = " << duration << "[ms]" << std::endl;
+    return duration;
 }
 

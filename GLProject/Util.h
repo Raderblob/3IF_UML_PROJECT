@@ -8,13 +8,16 @@
 
 #include <string>
 #include <vector>
-
+#include <chrono>
 class Util {
 public:
     static std::vector<std::string> splitString(const std::string& str, const char& del);
     static std::vector < std::pair<size_t,size_t> > splitStringSplitters(const std::string& str, const char& del);
     static std::vector<std::string> splitStringStream(const std::string& str, const char& del);
     static unsigned long dateToLong(const std::string& str);
+    static void startTimer();
+    static long long stopTimer();
+
 };
 
 

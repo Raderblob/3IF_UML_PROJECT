@@ -28,15 +28,16 @@ void AirQualityManager::saveEverything() const {
 }
 
 void AirQualityManager::loadEverything() {
-    auto startTime = std::chrono::steady_clock::now();
+    Util::startTimer();
     loadSensors();
     auto endTime = std::chrono::steady_clock::now();
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "[ms]" << std::endl;
-    startTime = std::chrono::steady_clock::now();
+    Util::stopTimer();
+    Util::startTimer();
     loadData();
-    endTime = std::chrono::steady_clock::now();
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "[ms]" << std::endl;
+    Util::stopTimer();
+    Util::startTimer();
     loadCleaners();
+    Util::stopTimer();
 }
 
 double AirQualityManager::getMeanAirQuality(const data::Coordinate& centerPoint, const double& totalWidth) const
@@ -96,7 +97,7 @@ void AirQualityManager::print()
     int counter = 0;
     for (double i = 40; i < 50; i += 0.5) {
         for (double j = -2; j < 10; j += 0.5) {
-            counter += sensorTree->searchPoint(data::Coordinate(i, j), 0.5).size();
+            counter += (int) sensorTree->searchPoint(data::Coordinate(i, j), 0.5).size();
         }
     }
     cout << counter << endl;
