@@ -1,5 +1,6 @@
 #include "User.h"
 #include <string>
+#include <iostream>
 
 namespace users {
 	bool User::operator<(const User& otherUser)const
@@ -23,6 +24,9 @@ namespace users {
 	}
 	User::User(const std::string& fName, const std::string& lName, const std::string& mail, const std::string& passw, const std::string& pNumber)
 	{
+#ifdef DEBUG
+		std::cout << "Constructor for User" << std::endl;
+#endif // DEBUG
 		firstName = fName;
 		lastName = lName;
 		email = mail;
@@ -39,6 +43,9 @@ namespace users {
 
 	User::~User()
 	{
+#ifdef DEBUG
+		std::cout << "Destructor for User" << std::endl;
+#endif // DEBUG
 	}
 
     const std::string& User::getEmail() const {

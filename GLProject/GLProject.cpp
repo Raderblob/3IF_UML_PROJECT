@@ -16,31 +16,48 @@ void test(){
     aManager.loadEverything();
     aManager.print();
     cout << "Testing air quality in different zones" << endl;
+    Util::startTimer();
+    cout << "data::Coordinate(47, 1), 1" << endl;
     cout << aManager.getMeanAirQuality(data::Coordinate(47, 1), 1) << endl;
+    cout << "data::Coordinate(47.6, 5.3), 1" << endl;
     cout << aManager.getMeanAirQuality(data::Coordinate(47.6, 5.3), 1) << endl;
+    cout << "data::Coordinate(45.3333, 1.3333), 1" << endl;
     cout << aManager.getMeanAirQuality(data::Coordinate(45.3333, 1.3333), 1) << endl;
+    cout << "data::Coordinate(45.333, 1.3333), 1,""2019 - 02 - 01 12:00 : 00"",""2019 - 03 - 01 00 : 00 : 00""" << endl;
     cout << aManager.getMeanAirQualityWithDate(data::Coordinate(45.333, 1.3333), 1,"2019-02-01 12:00:00","2019-03-01 00:00:00") << endl;
+    cout << "data::Coordinate(46.666, 3.6666), 1" << endl;
     cout << aManager.getMeanAirQuality(data::Coordinate(46.666, 3.6666), 1) << endl;
+    cout << "data::Coordinate(46.666, 3.6666), 1,""2019 - 02 - 01 12:00 : 00"",""2019 - 03 - 01 00 : 00 : 00""" << endl;
     cout << aManager.getMeanAirQualityWithDate(data::Coordinate(46.666, 3.6666), 1,"2019-02-01 12:00:00","2019-03-01 00:00:00") << endl;
-
+    Util::stopTimer("getMeanAirQualityWithDate and getMeanAirQuality * 6");
 
     cout << "AirCleaner zone of effect" << endl;
-    Util::startTimer();
+    
     auto cleaners = aManager.getCleaners();
     for (auto cleaner : cleaners) {
+        Util::startTimer();
         cout << cleaner.first << endl;
         cout << "ratio limit step = 0.1" << endl;
         cout << aManager.getAreaOfEffectOfCleaner(*cleaner.second,0.1,true,2) << endl;;
+        Util::stopTimer("getAreaOfEffectOfCleaner");
+
+        Util::startTimer();
+        cout << cleaner.first << endl;
         cout << "max limit step = 0.1" << endl;
-        cout << aManager.getAreaOfEffectOfCleaner(*cleaner.second,0.1, false, 1) << endl;;
+        cout << aManager.getAreaOfEffectOfCleaner(*cleaner.second,0.1, false, 1) << endl;
+        Util::stopTimer("getAreaOfEffectOfCleaner");
     }
-    Util::stopTimer();
+    
     cout << "tests finished" << endl;
 }
 
 int main()
 {
+
     test();
+
+
+
     InterfaceLogin();
 }
 

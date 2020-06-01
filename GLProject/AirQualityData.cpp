@@ -2,9 +2,13 @@
 #include "Util.h"
 #include "Sensor.h"
 #include <stdexcept>
+#include <iostream>
 namespace data {
 	AirQualityData::AirQualityData(const unsigned long& mTime, const data::Sensor* nSensor, Reading* mReading)
 	{
+#ifdef DEBUG
+		std::cout << "Constructor for AirQualityData" << std::endl;
+#endif // DEBUG
 		static int idCounter = 0;
 		attributeId = idCounter++;
 
@@ -16,6 +20,9 @@ namespace data {
 	}
 	AirQualityData::~AirQualityData()
 	{
+#ifdef DEBUG
+		std::cout << "Destructor for AirQualityData" << std::endl;
+#endif // DEBUG
 		for (auto reading : readings) {
 			delete reading;
 		}

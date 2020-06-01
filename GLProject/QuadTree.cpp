@@ -19,7 +19,7 @@ namespace data {
 
 				std::vector<Sensor*> res = data;
 				if (lowerLeftIn || lowerRightIn || upperRightIn || upperLeftIn) {
-					//std::cout << "Not in main origin Quad " << position.toString() + " " + std::to_string(quadSize) << std::endl;
+					//
 					res.clear();
 					AreasScanned areas;
 					if (upperLeftIn && !areas.upperLeft) {
@@ -47,7 +47,11 @@ namespace data {
 						i--;
 					}
 				}
-				//std::cout << "Number found " << res.size()<<std::endl;
+#ifdef DEBUG
+				std::cout << "Not in main origin Quad " << position.toString() + " " + std::to_string(quadSize) << std::endl;
+				std::cout << "Number found " << res.size() << std::endl;
+#endif // DEBUG
+
 				return res;
 			}
 			else {
@@ -80,8 +84,12 @@ namespace data {
 						i--;
 					}
 				}
+#ifdef DEBUG
 				//std::cout << "Found Data for " << p.toString()<<" sensors size:" << res.size() << std::endl;
 				//std::cout << cnt << std::endl;
+#endif // DEBUG
+
+
 
 				return res;
 			}
@@ -109,7 +117,10 @@ namespace data {
 		{
 
 			if (area > quadSize / 2 && area <= quadSize) {
-				//std::cout << "Found point " << p.toString() << " in " << position.toString() + " " + std::to_string(quadSize) << std::endl;
+#ifdef DEBUG
+				std::cout << "Found point " << p.toString() << " in " << position.toString() + " " + std::to_string(quadSize) << std::endl;
+#endif // DEBUG
+
 				Coordinate lowerRightCoord, lowerLeftCoord, upperRightCoord, upperLeftCoord;
 				switch (quadrant)
 				{
@@ -178,6 +189,10 @@ namespace data {
 		}
 		QuadTree::QuadTree(const QuadTree* myParent, const TREETYPE& tType)
 		{
+#ifdef DEBUG
+			std::cout<<"Constructor for QuadTree"<<std::endl
+#endif // DEBUG
+
 			parent = myParent;
 			type = tType;
 			quadSize = myParent->quadSize / 2;
@@ -225,11 +240,17 @@ namespace data {
 
 		QuadTree::QuadTree(const Coordinate& mPos, const int& mSize, const std::vector<Sensor*>& mData)
 		{
+#ifdef DEBUG
+			std::cout << "Constructor for QuadTree" << std::endl
+#endif // DEBUG
 			loadOriginTree(mPos, mSize, mData);
 		}
 
 		QuadTree::QuadTree(const std::vector<Sensor*>& mData)
 		{
+#ifdef DEBUG
+			std::cout << "Constructor for QuadTree" << std::endl
+#endif // DEBUG
 			Coordinate minVal = mData.at(0)->getPosition();
 			Coordinate maxVal = mData.at(0)->getPosition();
 			for (auto sensor : mData) {
@@ -257,6 +278,9 @@ namespace data {
 
 		QuadTree::~QuadTree()
 		{
+#ifdef DEBUG
+			std::cout << "Destructor for QuadTree" << std::endl
+#endif // DEBUG
 			delete upperLeft;
 			delete lowerLeft;
 			delete upperRight;

@@ -1,4 +1,4 @@
-//
+﻿//
 // Created by richard on 23/05/2020.
 //
 
@@ -71,11 +71,11 @@ void Util::startTimer()
     std::cout << "Start Clock" << std::endl;
 }
 
-long long Util::stopTimer()
+long long Util::stopTimer(const std::string& functionName)
 {
     auto endTime = std::chrono::steady_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
-    std::cout << "Time difference = " << duration << "[ms]" << std::endl;
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+    std::cout<<"Execution Time for  "  << functionName<<  " : "<< duration << "[microS]" << std::endl;
     return duration;
 }
 

@@ -16,7 +16,7 @@ public:
     static std::vector<std::string> splitStringStream(const std::string& str, const char& del);
     static unsigned long dateToLong(const std::string& str);
     static void startTimer();
-    static long long stopTimer();
+    static long long stopTimer(const std::string& functionName);
 
 };
 

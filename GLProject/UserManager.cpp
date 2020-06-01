@@ -8,12 +8,17 @@
 using namespace std;
 UserManager::UserManager()
 {
+#ifdef DEBUG
+    std::cout << "Contructor for UserManager" << std::endl;
+#endif // DEBUG
 
 }
 
 UserManager::~UserManager()
 {
-    std::cout<<"Deleting userList" <<std::endl;
+#ifdef DEBUG
+    std::cout << "Destructor for UserManager" << std::endl;
+#endif // DEBUG
     auto it = userList.begin();
     while(it!=userList.end()){
         std::cout<<it->second->getEmail()<<std::endl;

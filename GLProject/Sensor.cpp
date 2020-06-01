@@ -1,10 +1,11 @@
 #include "Sensor.h"
+#include <iostream>
 namespace data {
 
   
 
     std::string Sensor::toString() const {
-        return sensorID +";" + std::to_string(score) + ";" + (privateSensor? "1" : "0") + ";" + description;
+        return sensorID + ";" + myPosition.toString() + ";";
     }
     void Sensor::addData(AirQualityData* nData)
     {
@@ -24,6 +25,9 @@ namespace data {
     }
     Sensor::Sensor(const std::string& sensorID, const int& score, const bool& privateSensor, const Coordinate& aCoord, const std::string descr)
     {
+#ifdef DEBUG
+        std::cout << "Constructor for Sensor" << std::endl;
+#endif // DEBUG
         this->sensorID = sensorID;
         this->score = score;
         this->privateSensor = privateSensor;
@@ -32,6 +36,9 @@ namespace data {
     }
     Sensor::~Sensor()
     {
+#ifdef DEBUG
+        std::cout << "Destructor for Sensor" << std::endl;
+#endif // DEBUG
         for (auto data : myData) {
             delete data;
         }

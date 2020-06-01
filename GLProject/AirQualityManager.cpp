@@ -9,7 +9,9 @@
 using namespace std;
 
 AirQualityManager::~AirQualityManager() {
-    cout << "Deleting Data\n";
+#ifdef DEBUG
+    std::cout << "Destructor for AirQualityManager" << std::endl;
+#endif // DEBUG
     for (auto sensor : sensors) {
         delete sensor.second;
     }
@@ -20,6 +22,9 @@ AirQualityManager::~AirQualityManager() {
 }
 
 AirQualityManager::AirQualityManager() {
+#ifdef DEBUG
+    std::cout << "Constructor for AirQualityManager" << std::endl;
+#endif // DEBUG
     sensorTree = nullptr;
 }
 
@@ -28,16 +33,9 @@ void AirQualityManager::saveEverything() const {
 }
 
 void AirQualityManager::loadEverything() {
-    Util::startTimer();
     loadSensors();
-    auto endTime = std::chrono::steady_clock::now();
-    Util::stopTimer();
-    Util::startTimer();
     loadData();
-    Util::stopTimer();
-    Util::startTimer();
     loadCleaners();
-    Util::stopTimer();
 }
 
 double AirQualityManager::getMeanAirQuality(const data::Coordinate& centerPoint, const double& totalWidth) const
@@ -104,6 +102,8 @@ double AirQualityManager::getAreaOfEffectOfCleaner(const AirCleaner& cl,const do
 
 void AirQualityManager::print()
 {
+#ifdef DEBUG
+
     for (auto sensor :sensors) {
         std::cout << "Sensor " << sensor.first << std::endl;
         for (auto d : sensor.second->getData()) {
@@ -111,12 +111,6 @@ void AirQualityManager::print()
         }
     }
 
-    for (auto gridSquare : regionSensorLists) {
-        std::cout << gridSquare.first.toString() << std::endl;
-        for (auto sensor : gridSquare.second) {
-            std::cout << sensor->getId() << " " <<sensor->getPosition().toString() << std::endl;
-        }
-    }
 
     int counter = 0;
     for (double i = 40; i < 50; i += 0.5) {
@@ -126,12 +120,19 @@ void AirQualityManager::print()
     }
     cout << counter << endl;
 
+#endif // DEBUG
+    cout << "Sensors:" << endl;
+    for (auto s : sensors) {
+        std::cout << s.second->toString() << std::endl;
+    }
+    cout << "Cleaners:" << endl;
     for (auto cleaner : cleaners) {
-        std::cout<< cleaner.second->toString()<<std::endl;
+        std::cout << cleaner.second->toString() << std::endl;
     }
 }
 
 void AirQualityManager::loadSensors() {
+    Util::startTimer();
     ifstream dataFile;
     dataFile.open("dataset/sensors.csv");
     int idCounter = 0;
@@ -165,10 +166,11 @@ void AirQualityManager::loadSensors() {
         bruteSensors.push_back(sens.second);
     }
     sensorTree = new data::tree::QuadTree(bruteSensors);
-
+    Util::stopTimer("LoadSensors");
 }
 
 void AirQualityManager::loadCleaners() {
+    Util::startTimer();
     ifstream dataFile;
     dataFile.open("dataset/cleaners.csv");
     int idCounter = 0;
@@ -183,10 +185,12 @@ void AirQualityManager::loadCleaners() {
         }
     }
     dataFile.close();
+    Util::stopTimer("LoadCleaners");
 }
 
 void AirQualityManager::loadData()
 {
+    Util::startTimer();
 	ifstream dataFile;
 	dataFile.open("dataset/measurements.csv");
     data::Sensor* sensor = nullptr;
@@ -226,6 +230,7 @@ void AirQualityManager::loadData()
         sensor->addData(cData);
     }
     dataFile.close();
+    Util::stopTimer("load Date");
 }
 
 void AirQualityManager::saveCleaners() const {

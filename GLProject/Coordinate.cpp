@@ -44,23 +44,35 @@ namespace data {
 	}
 	Coordinate::Coordinate(const double& longd, const double& lat)
 	{
+#ifdef DEBUG
+		std::cout << "Constructor for Coordinate" << std::endl
+#endif // DEBUG
 		longitude = longd;
 		latitude = lat;
 	}
 
 	Coordinate::Coordinate(const Coordinate& aCoord)
 	{
+#ifdef DEBUG
+		std::cout << "Constructor(copy) for Coordinate" << std::endl
+#endif // DEBUG
 		longitude = aCoord.longitude;
 		latitude = aCoord.latitude;
 	}
 
 	Coordinate::Coordinate()
 	{
+#ifdef DEBUG
+		std::cout << "Constructor(Default) for Coordinate" << std::endl
+#endif // DEBUG
 		longitude = 0;
 		latitude = 0;
 	}
 	Coordinate::~Coordinate()
 	{
+#ifdef DEBUG
+		std::cout << "Destructor for Coordinate" << std::endl
+#endif // DEBUG
 	}
 
     std::string Coordinate::toString() const {

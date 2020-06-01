@@ -1,6 +1,10 @@
 #include "AirCleaner.h"
+#include <iostream>
 AirCleaner::AirCleaner(const std::string& aCID,  const data::Coordinate mPos, const unsigned long& t1, unsigned long t2)
 {
+#ifdef DEBUG
+	std::cout << "Constructor for AirCleaner" << std::endl;
+#endif // DEBUG
 	airCleanerId = aCID;
 	time1 = t1;
 	time2 = t2;
@@ -10,6 +14,9 @@ AirCleaner::AirCleaner(const std::string& aCID,  const data::Coordinate mPos, co
 
 AirCleaner::~AirCleaner()
 {
+#ifdef DEBUG
+	std::cout << "Destructor for AirCleaner" << std::endl;
+#endif // DEBUG
 }
 
 std::string AirCleaner::toString() const {

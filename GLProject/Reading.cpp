@@ -32,6 +32,9 @@ namespace data {
 	}
 	data::Reading::Reading(const std::string& type, const double& val)
 	{
+#ifdef DEBUG
+		std::cout << "Constructor for Reading" << std::endl
+#endif // DEBUG
 		if (type == "O3") {
 			this->type = READINGTYPE::O3;
 		}
