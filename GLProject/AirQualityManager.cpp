@@ -95,7 +95,13 @@ double AirQualityManager::getAreaOfEffectOfCleaner(const AirCleaner& cl,const do
         }
     } while (( ratio && ( nIndex<avgIndex/maxOrRatio)) ||( !ratio &&(nIndex<=maxOrRatio)));
     startingArea -= step;
-    return (startingArea==0.5?0:startingArea);
+
+    startingArea = (startingArea == 0.5 ? 0 : startingArea);
+
+    data::Coordinate leftC, rightC;
+    leftC = cl.getPosition() + data::Coordinate(-startingArea/2.0,0);
+    rightC = cl.getPosition() + data::Coordinate(startingArea / 2.0, 0);
+    return Util::getKm(leftC,rightC);
 }
 
 

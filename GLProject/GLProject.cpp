@@ -37,14 +37,14 @@ void test(){
     for (auto cleaner : cleaners) {
         Util::startTimer();
         cout << cleaner.first << endl;
-        cout << "ratio limit step = 0.1" << endl;
-        cout << aManager.getAreaOfEffectOfCleaner(*cleaner.second,0.1,true,2) << endl;;
+        cout << "ratio limit step = 0.01" << endl;
+        cout << aManager.getAreaOfEffectOfCleaner(*cleaner.second,0.01,true,2) << endl;;
         Util::stopTimer("getAreaOfEffectOfCleaner");
 
         Util::startTimer();
         cout << cleaner.first << endl;
-        cout << "max limit step = 0.1" << endl;
-        cout << aManager.getAreaOfEffectOfCleaner(*cleaner.second,0.1, false, 1) << endl;
+        cout << "max limit step = 0.01" << endl;
+        cout << aManager.getAreaOfEffectOfCleaner(*cleaner.second,0.01, false, 1) << endl;
         Util::stopTimer("getAreaOfEffectOfCleaner");
     }
     

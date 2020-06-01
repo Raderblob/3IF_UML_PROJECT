@@ -5,6 +5,7 @@
 #include "Util.h"
 #include <sstream>
 #include <iostream>
+#include <cmath>
 static std::chrono::steady_clock::time_point startTime;
 
 
@@ -77,5 +78,21 @@ long long Util::stopTimer(const std::string& functionName)
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
     std::cout<<"Execution Time for  "  << functionName<<  " : "<< duration << "[microS]" << std::endl;
     return duration;
+}
+
+double Util::getKm(const data::Coordinate& coord1, const data::Coordinate& coord2)
+{
+    double pi = 2 * acos(0.0);
+
+    double R = 6378.137; // Radius of earth in KM
+    double dLat = coord2.getLatitude() * pi / 180 - coord1.getLatitude() * pi / 180;
+    double dLon = coord2.getLongitude() *pi / 180 - coord1.getLongitude() * pi / 180;
+    double a = sin(dLat / 2) * sin(dLat / 2) +
+        cos(coord1.getLatitude() * pi / 180) * cos(coord2.getLatitude() * pi / 180) *
+        sin(dLon / 2) * sin(dLon / 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    double d = R * c;
+    return d; // Kmeters
+    
 }
 

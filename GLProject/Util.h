@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <chrono>
+#include "Coordinate.h"
 class Util {
 public:
     static std::vector<std::string> splitString(const std::string& str, const char& del);
@@ -17,6 +18,7 @@ public:
     static unsigned long dateToLong(const std::string& str);
     static void startTimer();
     static long long stopTimer(const std::string& functionName);
+    static double getKm(const data::Coordinate& coord1, const data::Coordinate& coord2);
 
 };
 
