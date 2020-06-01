@@ -39,9 +39,6 @@
     <ClCompile Include="AirCleaner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="User.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,6 +66,9 @@
     <ClCompile Include="Reading.cpp">
       <Filter>Source Files\data</Filter>
     </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files\users</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AirQualityManager.h">
@@ -78,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AirCleaner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PrivateIndividual.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Util.h">
@@ -109,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="Reading.h">
       <Filter>Header Files\data</Filter>
+    </ClInclude>
+    <ClInclude Include="PrivateIndividual.h">
+      <Filter>Header Files\Users</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

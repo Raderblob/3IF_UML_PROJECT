@@ -1,4 +1,5 @@
 #include "Coordinate.h"
+#include <iostream>
 namespace data {
 	bool Coordinate::operator<(const Coordinate& otherCoord) const
 	{
@@ -45,7 +46,7 @@ namespace data {
 	Coordinate::Coordinate(const double& longd, const double& lat)
 	{
 #ifdef DEBUG
-		std::cout << "Constructor for Coordinate" << std::endl
+		std::cout << "Constructor for Coordinate" << std::endl;
 #endif // DEBUG
 		longitude = longd;
 		latitude = lat;
@@ -54,7 +55,7 @@ namespace data {
 	Coordinate::Coordinate(const Coordinate& aCoord)
 	{
 #ifdef DEBUG
-		std::cout << "Constructor(copy) for Coordinate" << std::endl
+		std::cout << "Constructor(copy) for Coordinate" << std::endl;
 #endif // DEBUG
 		longitude = aCoord.longitude;
 		latitude = aCoord.latitude;
@@ -63,7 +64,7 @@ namespace data {
 	Coordinate::Coordinate()
 	{
 #ifdef DEBUG
-		std::cout << "Constructor(Default) for Coordinate" << std::endl
+		std::cout << "Constructor(Default) for Coordinate" << std::endl;
 #endif // DEBUG
 		longitude = 0;
 		latitude = 0;
@@ -71,7 +72,7 @@ namespace data {
 	Coordinate::~Coordinate()
 	{
 #ifdef DEBUG
-		std::cout << "Destructor for Coordinate" << std::endl
+		std::cout << "Destructor for Coordinate" << std::endl;
 #endif // DEBUG
 	}
 

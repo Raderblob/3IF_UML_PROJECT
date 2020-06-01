@@ -1,5 +1,6 @@
 #include "Reading.h"
 #include <stdexcept>
+#include <iostream>
 namespace data {
 	std::string Reading::getType() const
 	{
@@ -33,7 +34,7 @@ namespace data {
 	data::Reading::Reading(const std::string& type, const double& val)
 	{
 #ifdef DEBUG
-		std::cout << "Constructor for Reading" << std::endl
+		std::cout << "Constructor for Reading" << std::endl;
 #endif // DEBUG
 		if (type == "O3") {
 			this->type = READINGTYPE::O3;

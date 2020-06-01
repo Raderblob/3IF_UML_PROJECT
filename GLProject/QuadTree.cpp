@@ -190,7 +190,7 @@ namespace data {
 		QuadTree::QuadTree(const QuadTree* myParent, const TREETYPE& tType)
 		{
 #ifdef DEBUG
-			std::cout<<"Constructor for QuadTree"<<std::endl
+			std::cout << "Constructor for QuadTree" << std::endl;
 #endif // DEBUG
 
 			parent = myParent;
@@ -241,7 +241,7 @@ namespace data {
 		QuadTree::QuadTree(const Coordinate& mPos, const int& mSize, const std::vector<Sensor*>& mData)
 		{
 #ifdef DEBUG
-			std::cout << "Constructor for QuadTree" << std::endl
+			std::cout << "Constructor for QuadTree" << std::endl;
 #endif // DEBUG
 			loadOriginTree(mPos, mSize, mData);
 		}
@@ -249,7 +249,7 @@ namespace data {
 		QuadTree::QuadTree(const std::vector<Sensor*>& mData)
 		{
 #ifdef DEBUG
-			std::cout << "Constructor for QuadTree" << std::endl
+			std::cout << "Constructor for QuadTree" << std::endl;
 #endif // DEBUG
 			Coordinate minVal = mData.at(0)->getPosition();
 			Coordinate maxVal = mData.at(0)->getPosition();
@@ -279,7 +279,7 @@ namespace data {
 		QuadTree::~QuadTree()
 		{
 #ifdef DEBUG
-			std::cout << "Destructor for QuadTree" << std::endl
+			std::cout << "Destructor for QuadTree" << std::endl;
 #endif // DEBUG
 			delete upperLeft;
 			delete lowerLeft;
