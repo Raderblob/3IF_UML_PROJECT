@@ -22,7 +22,7 @@ namespace users {
 		//------------------------------------------------- Surcharge d'op�rateurs
 
 		//-------------------------------------------- Constructeurs - destructeur
-		PrivateIndividual(Sensor& sensor, const std::string& fName, const std::string& lName, const std::string& mail, const std::string& passw, const std::string& pNumber);
+		PrivateIndividual(data::Sensor& sensor, const std::string& fName, const std::string& lName, const std::string& mail, const std::string& passw, const std::string& pNumber);
 
 
 		//------------------------------------------------------------------ PRIVE

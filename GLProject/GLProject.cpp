@@ -4,6 +4,7 @@
 #include <iostream>
 #include "AirQualityManager.h"
 #include "Util.h"
+#include "PrivateIndividual.h"
 using namespace std;
 
 void InterfaceLogin();
@@ -11,6 +12,8 @@ void InterfaceIdividual();
 void InterfaceCompany();
 void InterfaceGovernment();
 
+
+AirQualityManager manager;
 void test(){
     AirQualityManager aManager;
     aManager.loadEverything();
@@ -56,7 +59,7 @@ int main()
 
     test();
 
-
+    manager.loadEverything();
 
     InterfaceLogin();
 }
@@ -91,29 +94,29 @@ void InterfaceLogin()
         }
     }
     
-    UserManager manager = new UserManager();
+   // UserManager* manager = new UserManager();
     string email;
-    string passwprd;
+    string password;
     cout << "Please input your email: ";
     cin >> email;
     cout << "\nPlease input your password: ";
     cin >> password;
     cout << endl;
-    User user = manager.tryLogin(email, password);
+   // const users::User* user = manager->tryLogin(email, password);
 
     switch (choice)
     {
     case 1:
     {
         cout << "Login as an individual" << endl;
-        if (user!=nullptr)
+      //  if (user!=nullptr)
           InterfaceIdividual();
         break;
     }
     case 2:
     {
         cout << "Login as a staff in a company" << endl;
-        if (user!=nullptr)
+      //  if (user!=nullptr)
           InterfaceCompany();
         break;
     }
@@ -121,7 +124,7 @@ void InterfaceLogin()
     case 3:
     {
         cout << "Login as a staff in a government" << endl;
-        if (user!=nullptr)
+       // if (user!=nullptr)
           InterfaceGovernment();
         break;
     }
@@ -133,8 +136,10 @@ void InterfaceLogin()
     }
 }
 
+
 void InterfaceIdividual()
 {
+    
     int choice = 0;
     int finished = 0;
     int nb_choice = 2;
@@ -163,17 +168,17 @@ void InterfaceIdividual()
         }
     }
     
-    Coordinate location = new Coordinate (12345, 54321);
-    Sensor* mySensor = new Sensor(123, 0, true, location, "My phone sensor");
-    PrivateIndividual individual = new PrivateIndividual(&sensor, user.fName,user.lName, user.mail, user.passw, user.pNumber);
+   // data::Coordinate* location = new data::Coordinate (12345, 54321);
+   // data::Sensor* mySensor = new data::Sensor(123, 0, true, location, "My phone sensor");
+    //users::PrivateIndividual individual = new users::PrivateIndividual(*mySensor, user.fName,user.lName, user.mail, user.passw, user.pNumber);
 
     switch (choice)
     {
     case 1:
     {
-      Reading* reading = new Reading("N02", 12);
-      AirQualityData* data = new AirQualityData(1327, &mySensor, &reading);
-      individual.sensor.addData(&data);
+      //data::Reading* reading = new data::Reading("N02", 12);
+     // data::AirQualityData* data = new data::AirQualityData(1327, &mySensor, &reading);
+     // individual.sensor.addData(&data);
       break;
     }
     case 2:
@@ -184,21 +189,23 @@ void InterfaceIdividual()
     case 0:
     {
         cout << "See you next time!" << endl;
-        int exit = manager.tryLogout(user);
+       // int exit = manager.tryLogout(user);
         break;
     }
     }
+    
 }
 
 void InterfaceCompany()
 {
+    
     int choice = 0;
     int finished = 0;
     int nb_choice = 2;
     
-    AirQualityManager* myManager = new AirQualityManager();
-    Coordiante location = new Coordinate(12345, 12345);
-    CompanyEmployee companyEmp = new CompanyEmployee(1234,"CompanyA", myManager.getMeanAirQuality(location), &myManager, user.fName,user.lName, user.mail, user.passw, user.pNumber);
+   // AirQualityManager* myManager = new AirQualityManager();
+   // Coordiante location = new Coordinate(12345, 12345);
+   // CompanyEmployee companyEmp = new CompanyEmployee(1234,"CompanyA", myManager.getMeanAirQuality(location), &myManager, user.fName,user.lName, user.mail, user.passw, user.pNumber);
 
     while (!finished)
     {
@@ -234,34 +241,36 @@ void InterfaceCompany()
         cin >> latitude;
         cout << "\nLongitude: ";
         cin >> longitude;
-        Coordinate area = new Coordinate(latitude, longitude);
+        data::Coordinate area =  data::Coordinate(latitude, longitude);
         
-        companyEmp.myManager.getMeanAirQuality(area);
+        //manager.getMeanAirQuality(area);
         break;
       }
       case 2:
       {
           //accessData();
-          companyEmp.myManager.print();
+          manager.print();
           break;
       }
       case 0:
       {
           cout << "See you next time!" << endl;
-          int exit = manager.tryLogout(user);
+        //  int exit = manager.tryLogout(user);
           break;
       }
     }
+    
 }
 
 void InterfaceGovernment()
 {
+    
     int choice = 0;
     int finished = 0;
     int nb_choice = 4;
     
-    AirQualityManager* myManager = new AirQualityManager();
-    GovEmployee govEmp = new GovEmployee(1234567, &myManager, user.fName, user.lName, user.mail, user.passw, user.pNumber);
+    //AirQualityManager* myManager = new AirQualityManager();
+    //GovEmployee govEmp = new GovEmployee(1234567, &myManager, user.fName, user.lName, user.mail, user.passw, user.pNumber);
 
     while (!finished)
     {
@@ -293,12 +302,12 @@ void InterfaceGovernment()
     {
     case 1:
     {
-        govEmp.myManager.print();
+        manager.print();
         break;
     }
     case 2:
     {
-        govEmp.mymManager.saveEverything();
+       // manager.saveEverything();
         break;
     }
     case 3:
@@ -314,10 +323,11 @@ void InterfaceGovernment()
     case 0:
     {
         cout << "See you next time!" << endl;
-        int exit = manager.tryLogout(user);
+       // int exit = manager.tryLogout(user);
         break;
     }
   }
+  
 
 }
 
