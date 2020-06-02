@@ -233,11 +233,18 @@ void InterfaceCompany()
             cout << "\n Width of square in long/lat: ";
             cin >> long_lat;
             data::Coordinate area = data::Coordinate(longitude, latitude);
+            Util::startTimer();
             cout << "\n Last month's air quality for the area centered in: " << endl;
             cout << " The latitude: " << latitude << endl;
             cout << " The longitude: " << longitude << endl;
             double quality = manager.getMeanAirQuality(area, long_lat);
-            cout << " is: " << quality << endl;
+            if (isnan(quality)) {
+                cout << "Input not valid no sensors" << endl;
+            }
+            else {
+                cout << " is: " << quality << endl;
+            }
+            Util::stopTimer("getMeanAirQuality");
             break;
         }
         case 2:
@@ -266,9 +273,17 @@ void InterfaceCompany()
 
             
             double quality1 = manager.getMeanAirQualityWithDate(area, long_lat, "2019-01-01 12:00:00", date);
-            cout << quality1 << endl;
+            
             double quality2 = manager.getMeanAirQualityWithDate(area, long_lat, date, "2019-12-31 12:00:00");
-            cout << "\nAfter using our cleaners, the air quality is now: " << quality2 << endl;
+
+            if (isnan(quality1)||isnan(quality2)) {
+                cout << "Input not valid no sensors" << endl;
+            }
+            else {
+                cout << quality1 << endl;
+                cout << "\nAfter using our cleaners, the air quality is now: " << quality2 << endl;
+            }
+            
             Util::stopTimer("getMeanAirQualityWithDate*2");
             break;
         }
@@ -310,7 +325,8 @@ void InterfaceCompany()
 
             cout << "Air cleaner coords :" << cleanerChosen->getPosition().toString() << endl;
 
-            int areaOfEffect = manager.getAreaOfEffectOfCleaner(*cleanerChosen, precision, rBChoice, maxOrRatio);
+            double areaOfEffect = manager.getAreaOfEffectOfCleaner(*cleanerChosen, precision, rBChoice, maxOrRatio);
+
             cout << "\nThe area of effect of the air cleaner is " << areaOfEffect << " km" << endl;
             Util::stopTimer("TimeToShowTheDifferenceInAirQuality");
             break;
