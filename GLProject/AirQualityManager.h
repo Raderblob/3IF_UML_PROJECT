@@ -7,7 +7,7 @@ class AirQualityManager
 {
 	//----------------------------------------------------------------- PUBLIC
 public:
-	//----------------------------------------------------- Méthodes publiques
+	//----------------------------------------------------- Mï¿½thodes publiques
 
 
 
@@ -86,7 +86,7 @@ public:
 	/// Prints the contents stored in memory
 	void print();
 
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 	//-------------------------------------------- Constructeurs - destructeur
 
@@ -99,17 +99,17 @@ public:
     UserManager userManager;
     //------------------------------------------------------------------ PRIVE
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
     void loadSensors();
 	void loadCleaners();
 	void loadData();
 	void saveSensors()const;
 	void saveCleaners()const;
 	void saveData() const;
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protï¿½gï¿½s
 	std::map<std::string,AirCleaner*> cleaners;
 	std::map<std::string,data::Sensor*> sensors;
-	std::map<data::Coordinate, std::vector<data::Sensor*>> regionSensorLists;
+	std::map<data::Coordinate, std::vector<data::Sensor*> > regionSensorLists;
 	data::tree::QuadTree* sensorTree;
 };
 

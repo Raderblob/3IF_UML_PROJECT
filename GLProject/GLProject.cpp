@@ -87,29 +87,42 @@ void InterfaceLogin()
         }
         if (!finished)
         {
-            cout << "\nplease entre a number correct" << endl;
+            cout << "\nplease entre a correct number " << endl;
         }
     }
+    
+    UserManager manager = new UserManager();
+    string email;
+    string passwprd;
+    cout << "Please input your email: ";
+    cin >> email;
+    cout << "\nPlease input your password: ";
+    cin >> password;
+    cout << endl;
+    User user = manager.tryLogin(email, password);
 
     switch (choice)
     {
     case 1:
     {
         cout << "Login as an individual" << endl;
-        InterfaceIdividual();
+        if (user!=nullptr)
+          InterfaceIdividual();
         break;
     }
     case 2:
     {
         cout << "Login as a staff in a company" << endl;
-        InterfaceCompany();
+        if (user!=nullptr)
+          InterfaceCompany();
         break;
     }
 
     case 3:
     {
         cout << "Login as a staff in a government" << endl;
-        InterfaceGovernment();
+        if (user!=nullptr)
+          InterfaceGovernment();
         break;
     }
     case 0:
@@ -149,22 +162,29 @@ void InterfaceIdividual()
             cout << "\nplease entre a number correct" << endl;
         }
     }
+    
+    Coordinate location = new Coordinate (12345, 54321);
+    Sensor* mySensor = new Sensor(123, 0, true, location, "My phone sensor");
+    PrivateIndividual individual = new PrivateIndividual(&sensor, user.fName,user.lName, user.mail, user.passw, user.pNumber);
 
     switch (choice)
     {
     case 1:
     {
-        //showScore();
-        break;
+      Reading* reading = new Reading("N02", 12);
+      AirQualityData* data = new AirQualityData(1327, &mySensor, &reading);
+      individual.sensor.addData(&data);
+      break;
     }
     case 2:
     {
-        //sendInfo();
+        //showScore();
         break;
     }
     case 0:
     {
         cout << "See you next time!" << endl;
+        int exit = manager.tryLogout(user);
         break;
     }
     }
@@ -175,6 +195,10 @@ void InterfaceCompany()
     int choice = 0;
     int finished = 0;
     int nb_choice = 2;
+    
+    AirQualityManager* myManager = new AirQualityManager();
+    Coordiante location = new Coordinate(12345, 12345);
+    CompanyEmployee companyEmp = new CompanyEmployee(1234,"CompanyA", myManager.getMeanAirQuality(location), &myManager, user.fName,user.lName, user.mail, user.passw, user.pNumber);
 
     while (!finished)
     {
@@ -202,21 +226,31 @@ void InterfaceCompany()
 
     switch (choice)
     {
-    case 1:
-    {
-        //requestdata();
+      case 1:
+      {
+        long latitude;
+        long longitude;
+        cout << "Latitude: ";
+        cin >> latitude;
+        cout << "\nLongitude: ";
+        cin >> longitude;
+        Coordinate area = new Coordinate(latitude, longitude);
+        
+        companyEmp.myManager.getMeanAirQuality(area);
         break;
-    }
-    case 2:
-    {
-        //accessData();
-        break;
-    }
-    case 0:
-    {
-        cout << "See you next time!" << endl;
-        break;
-    }
+      }
+      case 2:
+      {
+          //accessData();
+          companyEmp.myManager.print();
+          break;
+      }
+      case 0:
+      {
+          cout << "See you next time!" << endl;
+          int exit = manager.tryLogout(user);
+          break;
+      }
     }
 }
 
@@ -225,11 +259,14 @@ void InterfaceGovernment()
     int choice = 0;
     int finished = 0;
     int nb_choice = 4;
+    
+    AirQualityManager* myManager = new AirQualityManager();
+    GovEmployee govEmp = new GovEmployee(1234567, &myManager, user.fName, user.lName, user.mail, user.passw, user.pNumber);
 
     while (!finished)
     {
         cout << "\n***What you want to do:*** " << endl;
-        cout << "1 : Receive the information collected " << endl;
+        cout << "1 : View stored information " << endl;
         cout << "2 : Parse database with certain parameters " << endl;
         cout << "3 : Manage individual points " << endl;
         cout << "4 : Reply to company " << endl;
@@ -256,12 +293,12 @@ void InterfaceGovernment()
     {
     case 1:
     {
-        //
+        govEmp.myManager.print();
         break;
     }
     case 2:
     {
-        //
+        govEmp.mymManager.saveEverything();
         break;
     }
     case 3:
@@ -277,9 +314,10 @@ void InterfaceGovernment()
     case 0:
     {
         cout << "See you next time!" << endl;
+        int exit = manager.tryLogout(user);
         break;
     }
-    }
+  }
 
 }
 

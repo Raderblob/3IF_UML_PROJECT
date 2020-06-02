@@ -141,7 +141,7 @@ void AirQualityManager::loadSensors() {
     Util::startTimer();
     ifstream dataFile;
     dataFile.open("dataset/sensors.csv");
-    int idCounter = 0;
+    
     if (dataFile.is_open()) {
         while (!dataFile.eof()) {
             string str;
@@ -179,7 +179,7 @@ void AirQualityManager::loadCleaners() {
     Util::startTimer();
     ifstream dataFile;
     dataFile.open("dataset/cleaners.csv");
-    int idCounter = 0;
+    
     if (dataFile.is_open()) {
         while (!dataFile.eof()) {
             string str;

@@ -9,7 +9,7 @@ namespace users {
 	{
 		//----------------------------------------------------------------- PUBLIC
 	public:
-		//----------------------------------------------------- Méthodes publiques
+		//----------------------------------------------------- Mï¿½thodes publiques
 
 
 
@@ -19,17 +19,17 @@ namespace users {
 
 
 
-		//------------------------------------------------- Surcharge d'opérateurs
+		//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 		//-------------------------------------------- Constructeurs - destructeur
-
+		PrivateIndividual(Sensor& sensor, const std::string& fName, const std::string& lName, const std::string& mail, const std::string& passw, const std::string& pNumber);
 
 
 		//------------------------------------------------------------------ PRIVE
 	protected:
-		//----------------------------------------------------- Méthodes protégées
+		//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-		//----------------------------------------------------- Attributs protégés
+		//----------------------------------------------------- Attributs protï¿½gï¿½s
 		data::Sensor* mySensor;
 
 	};
