@@ -201,7 +201,7 @@ void InterfaceCompany()
     
     int choice = 0;
     int finished = 0;
-    int nb_choice = 2;
+    int nb_choice = 3;
     
    // AirQualityManager* myManager = new AirQualityManager();
    // Coordiante location = new Coordinate(12345, 12345);
@@ -211,7 +211,8 @@ void InterfaceCompany()
     {
         cout << "\n***What do you want to do:*** " << endl;
         cout << "1 : Request data about local area" << endl;
-        cout << "2 : Analyse the impact of air cleaners on an area " << endl;
+        cout << "2 : Analyse the impact of air cleaners on a precise area before and after a date" << endl;
+        cout << "3 : Choose the air cleaner you want to see the impact of" << endl;
         cout << "0 : Logout" << endl;
         cout << "Choose a number please:";
         cin >> choice;
@@ -248,7 +249,7 @@ void InterfaceCompany()
         cout << "\n Last month's air quality for the area centered in: "<< endl;
         cout << " The latitude: " << latitude << endl ;
         cout << " The longitude: " << longitude << endl ;
-        double quality = manager.getMeanAirQuality(area, radius*2);
+        double quality = manager.getMeanAirQuality(area, radius);
         cout << " is: " << quality   << endl ;
         break;
       }
@@ -275,11 +276,39 @@ void InterfaceCompany()
         cout << " The latitude: " << latitude << endl ;
         cout << " The longitude: " << longitude << endl ;
         cout << "was: "<< endl;
-        double quality1 = manager.getMeanAirQualityWithDate(area, radius*2,"2000-01-01 12:00:00",date);
+        double quality1 = manager.getMeanAirQualityWithDate(area, radius,"2019-01-01 12:00:00",date);
         cout << quality1 << endl;
-        double quality2 =manager.getMeanAirQualityWithDate(area, radius*2,date,"2500-12-31 12:00:00");
+        double quality2 =manager.getMeanAirQualityWithDate(area, radius,date,"2019-12-31 12:00:00");
         cout << "\nAfter using our cleaners, the air quality is now: "<< quality2 << endl;
 
+        break;
+      }
+      case 3:
+      {
+        Util::startTimer();
+        auto cleaners = manager.getCleaners();
+        cout << "List of air cleaners : " << endl;
+        for (auto cleaner : cleaners) {
+            
+            cout << cleaner.first << endl;
+        }
+        Util::stopTimer("TimeToReturnTheListOfCleaners");
+        cout << "Which one do you want to witness the impact ? "<< endl;
+        int nbC;
+        cin >>nbC;
+        Util::startTimer();
+        AirCleaner* cleanerChosen = cleaners.find(nbC)->second;
+        string date;
+        cout << " Input the date following the format : 2019-01-01 " <<endl;
+        cin >> date;
+        date+=" 12:00:00";
+        cout << "\n The air quality in the area of this cleaner has gone from : "<< endl;
+        double quality1 = manager.getMeanAirQualityWithDate(cleanerChosen->getPosition(), manager.getAreaOfEffectOfCleaner(*cleanerChosen->second,0.01,true,2),"2019-01-01 12:00:00",date);
+        cout << quality1 << endl;
+        double quality2 =manager.getMeanAirQualityWithDate(cleanerChosen->getPosition(), manager.getAreaOfEffectOfCleaner(*cleanerChosen->second,0.01,true,2),date,"2019-12-31 12:00:00");
+        cout << "\nAfter using our cleaners, the air quality "<< quality2 << endl;
+        cout << " is: " << quality2   << endl ;
+        Util::stopTimer("TimeToShowTheDifferenceInAirQuality");
         break;
       }
       case 0:
