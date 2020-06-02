@@ -90,7 +90,7 @@ void InterfaceLogin()
         }
         if (!finished)
         {
-            cout << "\nplease entre a correct number " << endl;
+            cout << "\nplease enter a correct number " << endl;
         }
     }
     
@@ -146,7 +146,7 @@ void InterfaceIdividual()
 
     while (!finished)
     {
-        cout << "\n***What you want to do:*** " << endl;
+        cout << "\n***What do you want to do:*** " << endl;
         cout << "1 : send information " << endl;
         cout << "2 : show user current score " << endl;
         cout << "0 : Logout" << endl;
@@ -164,7 +164,7 @@ void InterfaceIdividual()
 
         if (finished == 0)
         {
-            cout << "\nplease entre a number correct" << endl;
+            cout << "\nplease entre a correct number " << endl;
         }
     }
     
@@ -209,9 +209,9 @@ void InterfaceCompany()
 
     while (!finished)
     {
-        cout << "\n***What you want to do:*** " << endl;
-        cout << "1 : Request data about local area " << endl;
-        cout << "2 : Access and parse the data " << endl;
+        cout << "\n***What do you want to do:*** " << endl;
+        cout << "1 : Request data about local area" << endl;
+        cout << "2 : Analyse the impact of air cleaners on an area " << endl;
         cout << "0 : Logout" << endl;
         cout << "Choose a number please:";
         cin >> choice;
@@ -221,13 +221,14 @@ void InterfaceCompany()
             if (choice == i)
             {
                 finished = 1;
+                cout << "\nExiting" << endl;
                 break;
             }
         }
 
         if (finished == 0)
         {
-            cout << "\nplease entre a number correct" << endl;
+            cout << "\nplease entre a correct number" << endl;
         }
     }
 
@@ -235,22 +236,39 @@ void InterfaceCompany()
     {
       case 1:
       {
-        long latitude;
-        long longitude;
+        double latitude;
+        double longitude;
         cout << "Latitude: ";
         cin >> latitude;
         cout << "\nLongitude: ";
         cin >> longitude;
         data::Coordinate area =  data::Coordinate(latitude, longitude);
-        
-        //manager.getMeanAirQuality(area);
+        cout << "\n Last month's air quality for the area centered in: "<< endl;
+        cout << " The latitude: " << latitude << endl ;
+        cout << " The longitude: " << longitude << endl ;
+        manager.getMeanAirQualityWithDate(area, 1,"2019-02-01 12:00:00","2019-03-01 00:00:00");
         break;
       }
       case 2:
       {
-          //accessData();
-          manager.print();
-          break;
+        double latitude;
+        double longitude;
+        cout << "Latitude: ";
+        cin >> latitude;
+        cout << "\nLongitude: ";
+        cin >> longitude;
+        cout << "\nLongitude: ";
+        cin >> longitude;
+        data::Coordinate area =  data::Coordinate(latitude, longitude);
+        cout << "\n Two month ago, the air quality for the area centered in: "<< endl;
+        cout << " The latitude: " << latitude << endl ;
+        cout << " The longitude: " << longitude << endl ;
+        cout << "was: "<< endl;
+        manager.getMeanAirQualityWithDate(area, 1,"2019-01-01 12:00:00","2019-02-01 00:00:00");
+        cout << "\n After using our cleaners, the air quality is now: "<< endl;
+        manager.getMeanAirQualityWithDate(area, 1,"2019-02-01 12:00:00","2019-03-01 00:00:00");
+
+        break;
       }
       case 0:
       {
