@@ -238,7 +238,7 @@ void InterfaceCompany()
             cout << " The latitude: " << latitude << endl;
             cout << " The longitude: " << longitude << endl;
             double quality = manager.getMeanAirQuality(area, long_lat);
-            if (isnan(quality)) {
+            if (quality!=quality) {
                 cout << "Input not valid no sensors" << endl;
             }
             else {
@@ -276,7 +276,7 @@ void InterfaceCompany()
             
             double quality2 = manager.getMeanAirQualityWithDate(area, long_lat, date, "2019-12-31 12:00:00");
 
-            if (isnan(quality1)||isnan(quality2)) {
+            if (quality1!=quality1||quality2!=quality2) {
                 cout << "Input not valid no sensors" << endl;
             }
             else {
