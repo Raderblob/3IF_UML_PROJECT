@@ -4,7 +4,6 @@
 #include <iostream>
 #include "AirQualityManager.h"
 #include "Util.h"
-#include "PrivateIndividual.h"
 using namespace std;
 
 void InterfaceLogin();
@@ -199,7 +198,7 @@ void InterfaceIdividual()
 void InterfaceCompany()
 {
     
-    int choice = 0;
+    int choice = -1;
     int finished = 0;
     int nb_choice = 3;
     
@@ -207,7 +206,7 @@ void InterfaceCompany()
    // Coordiante location = new Coordinate(12345, 12345);
    // CompanyEmployee companyEmp = new CompanyEmployee(1234,"CompanyA", myManager.getMeanAirQuality(location), &myManager, user.fName,user.lName, user.mail, user.passw, user.pNumber);
 
-    while (!finished)
+    while (!(choice==0))
     {
         cout << "\n***What do you want to do:*** " << endl;
         cout << "1 : Request data about local area" << endl;
@@ -217,123 +216,113 @@ void InterfaceCompany()
         cout << "Choose a number please:";
         cin >> choice;
 
-        for (int i = 0; i < nb_choice + 1; i++)
+
+        switch (choice)
         {
-            if (choice == i)
-            {
-                finished = 1;
-                break;
-            }
-        }
-
-        if (finished == 0)
+        case 1:
         {
-            cout << "\nplease entre a correct number" << endl;
+            double latitude;
+            double longitude;
+            int long_lat;
+
+            cout << "\nLongitude: ";
+            cin >> longitude;
+            cout << "Latitude: ";
+            cin >> latitude;
+
+            cout << "\n Width of square in long/lat: ";
+            cin >> long_lat;
+            data::Coordinate area = data::Coordinate(longitude, latitude);
+            cout << "\n Last month's air quality for the area centered in: " << endl;
+            cout << " The latitude: " << latitude << endl;
+            cout << " The longitude: " << longitude << endl;
+            double quality = manager.getMeanAirQuality(area, long_lat);
+            cout << " is: " << quality << endl;
+            break;
         }
-    }
+        case 2:
+        {
+            double latitude;
+            double longitude;
+            int long_lat;
+            string date;
+            string date2;
+            cout << "\nLongitude: ";
+            cin >> longitude;
+            cout << "Latitude: ";
+            cin >> latitude;
 
-    switch (choice)
-    {
-      case 1:
-      {
-        double latitude;
-        double longitude;
-        int radius;
-        cout << "Latitude: ";
-        cin >> latitude;
-        cout << "\nLongitude: ";
-        cin >> longitude;
-        cout << "\n Radius: ";
-        cin >> radius;
-        data::Coordinate area =  data::Coordinate(latitude, longitude);
-        cout << "\n Last month's air quality for the area centered in: "<< endl;
-        cout << " The latitude: " << latitude << endl ;
-        cout << " The longitude: " << longitude << endl ;
-        double quality = manager.getMeanAirQuality(area, radius);
-        cout << " is: " << quality   << endl ;
-        break;
-      }
-      case 2:
-      {
-        double latitude;
-        double longitude;
-        int radius;
-        string date;
-        string date2;
+            cout << "\n Width of square in long/lat: ";
+            cin >> long_lat;
+            cout << " Input the date following the format : YYYY-MM-DD " << endl;
+            cin >> date;
+            date += " 12:00:00";
+            Util::startTimer();
+            data::Coordinate area = data::Coordinate(longitude, latitude);
+            cout << "\n Two month ago, the air quality for the area centered in: " << endl;
+            cout << " The latitude: " << latitude << endl;
+            cout << " The longitude: " << longitude << endl;
+            cout << "was: " << endl;
 
-        cout << "Latitude: ";
-        cin >> latitude;
-        cout << "\nLongitude: ";
-        cin >> longitude;
-        cout << "\n Radius: ";
-        cin >> radius;
-        cout << " Input the date following the format : 2019-01-01 " <<endl;
-        cin >> date;
-        date+=" 12:00:00";
-
-        data::Coordinate area =  data::Coordinate(latitude, longitude);
-        cout << "\n Two month ago, the air quality for the area centered in: "<< endl;
-        cout << " The latitude: " << latitude << endl ;
-        cout << " The longitude: " << longitude << endl ;
-        cout << "was: "<< endl;
-        double quality1 = manager.getMeanAirQualityWithDate(area, radius,"2019-01-01 12:00:00",date);
-        cout << quality1 << endl;
-        double quality2 =manager.getMeanAirQualityWithDate(area, radius,date,"2019-12-31 12:00:00");
-        cout << "\nAfter using our cleaners, the air quality is now: "<< quality2 << endl;
-
-        break;
-      }
-      case 3:
-      {
-        Util::startTimer();
-        auto cleaners = manager.getCleaners();
-        cout << "List of air cleaners : " << endl;
-        for (auto cleaner : cleaners) {
             
-            cout << cleaner.first << endl;
+            double quality1 = manager.getMeanAirQualityWithDate(area, long_lat, "2019-01-01 12:00:00", date);
+            cout << quality1 << endl;
+            double quality2 = manager.getMeanAirQualityWithDate(area, long_lat, date, "2019-12-31 12:00:00");
+            cout << "\nAfter using our cleaners, the air quality is now: " << quality2 << endl;
+            Util::stopTimer("getMeanAirQualityWithDate*2");
+            break;
         }
-        Util::stopTimer("TimeToReturnTheListOfCleaners");
-        cout << "Which one do you want to witness the impact ? "<< endl;
-        string nbC;
-        double precision;
-        double maxOrRatio;
-        cin >>nbC;
+        case 3:
+        {
+            Util::startTimer();
+            auto cleaners = manager.getCleaners();
+            cout << "List of air cleaners : " << endl;
+            for (auto cleaner : cleaners) {
 
-        cout << "Do you wish a ratio or a max limit(0 for Ratio, 1 for limit)" << endl;
-        int rChoice;
-        bool rBChoice;
-        cin >> rChoice;
-        if (rChoice == 0) {
-            rBChoice = true;
-            cout << "Enter ratio (>0)" << endl;
+                cout << cleaner.first << endl;
+            }
+            Util::stopTimer("TimeToReturnTheListOfCleaners");
+            cout << "Which one do you want to witness the impact ? " << endl;
+            string nbC;
+            double precision;
+            double maxOrRatio;
+            cin >> nbC;
+
+            cout << "Do you wish a ratio or a max limit(0 for Ratio, 1 for limit)" << endl;
+            int rChoice;
+            bool rBChoice;
+            cin >> rChoice;
+            if (rChoice == 0) {
+                rBChoice = true;
+                cout << "Enter ratio (>0)" << endl;
+            }
+            else {
+                rBChoice = false;
+                cout << "Enter max limit (>0)" << endl;
+            }
+            cin >> maxOrRatio;
+
+            cout << "Enter precision (>0) " << endl;
+            cin >> precision;
+
+            Util::startTimer();
+            AirCleaner* cleanerChosen = cleaners.find(nbC)->second;
+
+            cout << "Air cleaner coords :" << cleanerChosen->getPosition().toString() << endl;
+
+            int areaOfEffect = manager.getAreaOfEffectOfCleaner(*cleanerChosen, precision, rBChoice, maxOrRatio);
+            cout << "\nThe area of effect of the air cleaner is " << areaOfEffect << " km" << endl;
+            Util::stopTimer("TimeToShowTheDifferenceInAirQuality");
+            break;
         }
-        else {
-            rBChoice = false;
-            cout << "Enter max limit (>0)" << endl;
+        case 0:
+        {
+            cout << "See you next time!" << endl;
+            //  int exit = manager.tryLogout(user);
+            break;
         }
-        cin >> maxOrRatio;
-
-        cout << "Enter precision (>0) " << endl;
-        cin >> precision;
-
-        Util::startTimer();
-        AirCleaner* cleanerChosen = cleaners.find(nbC)->second;
-
-        cout << "Air cleaner coords :" << cleanerChosen->getPosition().toString() << endl;
-
-        int areaOfEffect = manager.getAreaOfEffectOfCleaner(*cleanerChosen, precision, rBChoice, maxOrRatio);
-        cout << "\nThe area of effect of the air cleaner is "<<areaOfEffect <<" km"<< endl;
-        Util::stopTimer("TimeToShowTheDifferenceInAirQuality");
-        break;
-      }
-      case 0:
-      {
-          cout << "See you next time!" << endl;
-        //  int exit = manager.tryLogout(user);
-          break;
-      }
+        }
     }
-    
 }
 
 void InterfaceGovernment()
