@@ -93,7 +93,7 @@ void InterfaceLogin()
             cout << "\nplease enter a correct number " << endl;
         }
     }
-    
+    /*
    // UserManager* manager = new UserManager();
     string email;
     string password;
@@ -103,7 +103,7 @@ void InterfaceLogin()
     cin >> password;
     cout << endl;
    // const users::User* user = manager->tryLogin(email, password);
-
+    */
     switch (choice)
     {
     case 1:
@@ -221,7 +221,6 @@ void InterfaceCompany()
             if (choice == i)
             {
                 finished = 1;
-                cout << "\nExiting" << endl;
                 break;
             }
         }
@@ -238,35 +237,48 @@ void InterfaceCompany()
       {
         double latitude;
         double longitude;
+        int radius;
         cout << "Latitude: ";
         cin >> latitude;
         cout << "\nLongitude: ";
         cin >> longitude;
+        cout << "\n Radius: ";
+        cin >> radius;
         data::Coordinate area =  data::Coordinate(latitude, longitude);
         cout << "\n Last month's air quality for the area centered in: "<< endl;
         cout << " The latitude: " << latitude << endl ;
         cout << " The longitude: " << longitude << endl ;
-        manager.getMeanAirQualityWithDate(area, 1,"2019-02-01 12:00:00","2019-03-01 00:00:00");
+        double quality = manager.getMeanAirQuality(area, radius);
+        cout << " is: " << quality   << endl ;
         break;
       }
       case 2:
       {
         double latitude;
         double longitude;
+        int radius;
+        string date;
+        string date2;
+
         cout << "Latitude: ";
         cin >> latitude;
         cout << "\nLongitude: ";
         cin >> longitude;
-        cout << "\nLongitude: ";
-        cin >> longitude;
+        cout << "\n Radius: ";
+        cin >> radius;
+        cout << " Input the date following the format : 2019-01-01 " <<endl;
+        cin >> date;
+        date+=" 12:00:00";
+
         data::Coordinate area =  data::Coordinate(latitude, longitude);
         cout << "\n Two month ago, the air quality for the area centered in: "<< endl;
         cout << " The latitude: " << latitude << endl ;
         cout << " The longitude: " << longitude << endl ;
         cout << "was: "<< endl;
-        manager.getMeanAirQualityWithDate(area, 1,"2019-01-01 12:00:00","2019-02-01 00:00:00");
-        cout << "\n After using our cleaners, the air quality is now: "<< endl;
-        manager.getMeanAirQualityWithDate(area, 1,"2019-02-01 12:00:00","2019-03-01 00:00:00");
+        double quality1 = manager.getMeanAirQualityWithDate(area, radius,"2019-01-01 12:00:00",date);
+        cout << quality1 << endl;
+        double quality2 =manager.getMeanAirQualityWithDate(area, radius,date,"2019-12-31 12:00:00");
+        cout << "\nAfter using our cleaners, the air quality is now: "<< quality2 << endl;
 
         break;
       }
