@@ -248,7 +248,7 @@ void InterfaceCompany()
         cout << "\n Last month's air quality for the area centered in: "<< endl;
         cout << " The latitude: " << latitude << endl ;
         cout << " The longitude: " << longitude << endl ;
-        double quality = manager.getMeanAirQuality(area, radius);
+        double quality = manager.getMeanAirQuality(area, radius*2);
         cout << " is: " << quality   << endl ;
         break;
       }
@@ -275,9 +275,9 @@ void InterfaceCompany()
         cout << " The latitude: " << latitude << endl ;
         cout << " The longitude: " << longitude << endl ;
         cout << "was: "<< endl;
-        double quality1 = manager.getMeanAirQualityWithDate(area, radius,"2019-01-01 12:00:00",date);
+        double quality1 = manager.getMeanAirQualityWithDate(area, radius*2,"2000-01-01 12:00:00",date);
         cout << quality1 << endl;
-        double quality2 =manager.getMeanAirQualityWithDate(area, radius,date,"2019-12-31 12:00:00");
+        double quality2 =manager.getMeanAirQualityWithDate(area, radius*2,date,"2500-12-31 12:00:00");
         cout << "\nAfter using our cleaners, the air quality is now: "<< quality2 << endl;
 
         break;
