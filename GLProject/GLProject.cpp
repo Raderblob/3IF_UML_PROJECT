@@ -294,20 +294,35 @@ void InterfaceCompany()
         }
         Util::stopTimer("TimeToReturnTheListOfCleaners");
         cout << "Which one do you want to witness the impact ? "<< endl;
-        int nbC;
+        string nbC;
+        double precision;
+        double maxOrRatio;
         cin >>nbC;
+
+        cout << "Do you wish a ratio or a max limit(0 for Ratio, 1 for limit)" << endl;
+        int rChoice;
+        bool rBChoice;
+        cin >> rChoice;
+        if (rChoice == 0) {
+            rBChoice = true;
+            cout << "Enter ratio (>0)" << endl;
+        }
+        else {
+            rBChoice = false;
+            cout << "Enter max limit (>0)" << endl;
+        }
+        cin >> maxOrRatio;
+
+        cout << "Enter precision (>0) " << endl;
+        cin >> precision;
+
         Util::startTimer();
         AirCleaner* cleanerChosen = cleaners.find(nbC)->second;
-        string date;
-        cout << " Input the date following the format : 2019-01-01 " <<endl;
-        cin >> date;
-        date+=" 12:00:00";
-        cout << "\n The air quality in the area of this cleaner has gone from : "<< endl;
-        double quality1 = manager.getMeanAirQualityWithDate(cleanerChosen->getPosition(), manager.getAreaOfEffectOfCleaner(*cleanerChosen->second,0.01,true,2),"2019-01-01 12:00:00",date);
-        cout << quality1 << endl;
-        double quality2 =manager.getMeanAirQualityWithDate(cleanerChosen->getPosition(), manager.getAreaOfEffectOfCleaner(*cleanerChosen->second,0.01,true,2),date,"2019-12-31 12:00:00");
-        cout << "\nAfter using our cleaners, the air quality "<< quality2 << endl;
-        cout << " is: " << quality2   << endl ;
+
+        cout << "Air cleaner coords :" << cleanerChosen->getPosition().toString() << endl;
+
+        int areaOfEffect = manager.getAreaOfEffectOfCleaner(*cleanerChosen, precision, rBChoice, maxOrRatio);
+        cout << "\nThe area of effect of the air cleaner is "<<areaOfEffect <<" km"<< endl;
         Util::stopTimer("TimeToShowTheDifferenceInAirQuality");
         break;
       }

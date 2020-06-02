@@ -118,15 +118,17 @@ void AirQualityManager::print()
     }
 
 
+
+
+#endif // DEBUG
+
     int counter = 0;
     for (double i = 40; i < 50; i += 0.5) {
         for (double j = -2; j < 10; j += 0.5) {
-            counter += (int) sensorTree->searchPoint(data::Coordinate(i, j), 0.5).size();
-        }
+            counter += (int)sensorTree->searchPoint(data::Coordinate(i, j), 0.5).size();
+}
     }
-    cout << counter << endl;
-
-#endif // DEBUG
+    cout << "Check=100:"<< counter << endl;
     cout << "Sensors:" << endl;
     for (auto s : sensors) {
         std::cout << s.second->toString() << std::endl;
